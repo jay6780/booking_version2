@@ -1,0 +1,33 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+//        maven {
+//            url "https://sdk.developer.deepar.ai/maven-android-repository/releases/"
+//        }
+        maven { url 'https://www.jitpack.io' }
+        maven {
+            url 'https://maven.google.com/'}
+    }
+}
+include ':app'
+include ':emoticongifkeyboard'
+include ':gifpack-giphy'
+include ':ucrop'
+include ':kalendarview'
+include ':photopicker'
+include ':library'
+include ':proprogressviews'
+include ':reviewratings'
+include ':ratingstarred'
+include ':bubblenavigation'
+include ':blinkingloader'

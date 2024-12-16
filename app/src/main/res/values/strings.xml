@@ -1,0 +1,146 @@
+<resources>
+    <string name="app_name">STYLESYNC</string>
+    <string name="open">Open Navigation Drawer</string>
+    <string name="close">Close Navigation Drawer</string>
+
+    <string name="facebook_app_id">1736882390402306</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">f4082df1a90e4a88ebc08a30483c0016</string>
+    <string name="googlclientId">702568504578-9jflqfr69f1p9isrsfdjbpm72bpkqsip.apps.googleusercontent.com</string>
+    <string name="myProfile">My Profile</string>
+    <string name="Apikey">AIzaSyD7ICzl-EfvraMPIZK7mD6I5w9H0-YQJxk</string>
+    <string name="appId">186663580</string>
+    <string name="appSign">8c57646a3cd1ccb96fc02304a8836dbec028ac2c9ed44eaaa62ed18ec0980411</string>
+    <string name="faceswapapikey">cm1yeptoj0008l5035mplahox</string>
+    <string name="faceswapapikey2">cm253vcsi0002mj03imjaqtkn</string>
+    <string name="welcomemsg">Welcome to StyleSync – Your Ultimate Destination for Beauty and Style! Discover top-notch beauty services, book appointments with ease, and transform your look effortlessly!</string>
+    <string-array name="gender_array">
+        <item>Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="discount_array">
+        <item>Discount</item>
+        <item>30</item>
+        <item>50</item>
+    </string-array>
+
+    <string name="event_name">Event Name</string>
+    <string name="price">Price</string>
+    <string name="Saved">Saved</string>
+    <string name="comment">comment</string>
+    <string name="rate_now">Rate now</string>
+    <string name="service_name">Service name</string>
+    <string name="saved">Saved</string>
+    <string name="age">Age</string>
+    <string name="service_lenght">Length of service</string>
+    <string name="map">Map</string>
+    <string name="years">Years of Experience</string>
+    <string name="taon">Years</string>
+    <string name="name">name</string>
+    <string name="send_msg">Send message</string>
+    <string name="signup">Sign Up</string>
+    <string name="login">Login</string>
+    <string name="createOrganizer">Create event organizer account</string>
+    <string name="fullname">Fullname</string>
+    <string name="email">Email</string>
+    <string name="username">username</string>
+    <string name="phone">Phone</string>
+    <string name="password">Password</string>
+    <string name="confirmpassword">Confirm password</string>
+    <string name="welcome">Welcome</string>
+    <string name="personal">Create a personal account</string>
+    <string name="forgotpassword">Forgot Password?</string>
+    <string name="recovertEmail">Please enter recovery email address</string>
+    <string name="resetpassword">Reset password</string>
+    <string name="signmsg"> Log in to StyleSync and unlock the best in beauty and style. Your next transformation is just a click away!</string>
+    <string name="signupmsg">Sign up now to discover and book top-notch beauty services in your area!</string>
+    <string name="restmsg">Reset Your Password and Get Back to Beauty with StyleSync. Don’t worry, we’ll help you get back on track in no time!</string>
+    <string name="add_event">Add event</string>
+    <string name="selectimg">Please select an image</string>
+    <string name="crop_failed">Crop failed</string>
+    <string name="validService">Please provide valid service name, price, image</string>
+    <string name="failedUrl">Failed to get image URL</string>
+    <string name="failedimgupload">Failed to upload image</string>
+    <string name="signIn">Sign In</string>
+    <string name="language">Language</string>
+    <string name="category">Categories</string>
+    <string name="makeup">Makeup</string>
+    <string name="desired">Find your Desired Artist/Organizer</string>
+    <string name="event">Event</string>
+    <string name="organizing">Organizing</string>
+    <string name="topArtist">Top Artists</string>
+    <string name="viewAll">View all</string>
+    <string name="topOrganizers">Top Organizers</string>
+    <string name="address">Adress</string>
+    <string name="appointment">appointment</string>
+    <string name="updateprofile">Update profile</string>
+    <string name="privacy">Privacy</string>
+    <string name="booking">Booking</string>
+    <string name="historybook">Historybook</string>
+    <string name="help">Help and support</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="areyousure">Are you sure want to logout?</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="updateProfile">Update your profile?</string>
+    <string name="hmua">Hair and Makeup Artist</string>
+    <string name="eventArtists">Event Organizers</string>
+    <string name="favorites">Find your Favorite Artist/Organizer</string>
+    <string name="favoriteArtists">My favorite Artists</string>
+    <string name="favoriteOrganizers">My favorite Organizers</string>
+    <string name="artistsdetails">Makeup Artist Details</string>
+    <string name="yearss">Years</string>
+    <string name="Available_chat">Available chat</string>
+    <string name="Booking_history">Booking history</string>
+    <string name="My_Favorites">My Favorites</string>
+    <string name="Add_comment">Add comment</string>
+    <string name="reviewcontent_error">Please enter your review content</string>
+    <string name="addratingError">Please provide a rating</string>
+    <string name="selectimg_error">Please select an image</string>
+    <string name="errorupload">Failed to upload image</string>
+    <string name="noPhotoselectError">No photos selected</string>
+    <string name="review_success">Review saved successfully</string>
+    <string name="review_failed">Failed to save review</string>
+    <string name="service_msg">What service can you provide?</string>
+    <string name="setupservice">Set up your Service</string>
+    <string name="discount">Add Discount</string>
+    <string name="discountSaved">Discount saved</string>
+    <string name="errorSavedDiscount">Failed to save discount</string>
+    <string name="select_discount">Please select a discount</string>
+    <string name="nodiscount">No discount available wait again</string>
+    <string name="discountTitle">Discount</string>
+    <string name="restartApp">The location not accurate please restart the app</string>
+    <string name="restart">Restart</string>
+    <string name="restartmsg">Restart the app?</string>
+    <string name="clearedDiscount">Clear discount?</string>
+    <string name="discount_clearedsucess">Discount cleared</string>
+    <string name="discountError">No discount found for this provider</string>
+    <string name="addinfo">Add information</string>
+    <string name="deletesure">Are you sure want to delete?</string>
+    <string name="eventTitle">Event organizer details</string>
+    <string name="hmudetails">Make up artist details</string>
+    <string name="event_details">Event Organizer Details</string>
+    <string name="explore">Explore</string>
+    <string name="switch_account">Switch account</string>
+    <string name="sign_in">Signed in</string>
+    <string name="other_account">Other account</string>
+    <string name="book_tohavehistory">Book to have History</string>
+    <string name="cancel">Cancel</string>
+    <string name="cancel_msg">Cancel Booking</string>
+    <string name="sure_cancel">Are you sure you want to cancel this booking?</string>
+    <string name="yes">Yes</string>
+    <string name="no">no</string>
+    <string name="cancelling_book">Cancelling booking...</string>
+    <string name="appointment_failed">Appointment Failed</string>
+
+
+    <string-array name="language_array">
+        <item>Default</item>
+        <item>English</item>
+        <item>Filipino</item>
+    </string-array>
+
+
+</resources>

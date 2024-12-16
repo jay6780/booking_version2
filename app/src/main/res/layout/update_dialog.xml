@@ -1,0 +1,28 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <include layout="@layout/logout_header"/>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/rocket"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Style Sync new update"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:layout_marginBottom="10dp"/>
+
+
+
+
+
+    <include layout="@layout/logout_footer"/>
+</LinearLayout>

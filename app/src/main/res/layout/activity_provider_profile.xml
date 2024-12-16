@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Mywhite">
+
+    <include
+        layout="@layout/newprofilemenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/headermenu"/>
+
+
+    <RelativeLayout
+        android:id="@+id/backlayout"
+        android:layout_below="@+id/headermenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/back"
+            android:fontFamily="@font/inter"
+            android:text="Hair and Makeup Artists"
+            android:textColor="@color/maroon"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_below="@+id/backlayout"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/baseline_person_24" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/backlayout"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@+id/avatar"
+        android:fontFamily="@font/inter"
+        android:text="Name"
+        android:textColor="@color/maroon"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/avatar"
+        android:fontFamily="@font/inter"
+        android:text="Age"
+        android:textColor="@color/maroon"
+        android:textSize="15sp" />
+
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/age"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/avatar"
+        android:fontFamily="@font/inter"
+        android:text="Address"
+        android:textColor="@color/maroon"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/lenghtofservice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/address"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/avatar"
+        android:fontFamily="@font/inter"
+        android:text="Length of service"
+        android:textColor="@color/maroon"
+        android:textSize="15sp" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/message"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lenghtofservice"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/avatar"
+        android:background="@drawable/round_btn"
+        android:drawableStart="@drawable/mail"
+        android:fontFamily="@font/inter"
+        android:gravity="center"
+        android:text="Message"
+        android:textColor="@color/maroon" />
+
+
+    <RelativeLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/message"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/services"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            android:layout_toLeftOf="@+id/rate"
+            android:fontFamily="@font/inter"
+            android:text="Services"
+            android:textColor="@color/maroon"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/inter"
+            android:text="Portfolio"
+            android:textColor="@color/maroon"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/reviews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="50dp"
+            android:layout_toRightOf="@+id/rate"
+            android:fontFamily="@font/inter"
+            android:text="Reviews"
+            android:textColor="@color/maroon"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/ll_skeleton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll1"
+        android:visibility="gone">
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/priceList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_below="@+id/ll1"
+        android:layout_marginTop="10dp" />
+</RelativeLayout>

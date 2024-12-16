@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "702568504578",
+    "firebase_url": "https://salon-e7e1e-default-rtdb.firebaseio.com",
+    "project_id": "salon-e7e1e",
+    "storage_bucket": "salon-e7e1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:702568504578:android:e77f005b2589cc7620361b",
+        "android_client_info": {
+          "package_name": "com.hair.booking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "702568504578-edn66m2glfrhlaiaug4ce9c9k362hd21.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hair.booking",
+            "certificate_hash": "3be1b30cfee5287c8a1af27c05fe98db188dd1c0"
+          }
+        },
+        {
+          "client_id": "702568504578-9jflqfr69f1p9isrsfdjbpm72bpkqsip.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsOPVFz8rax2G3hcog5GKw6VpCICx347M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "702568504578-9jflqfr69f1p9isrsfdjbpm72bpkqsip.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

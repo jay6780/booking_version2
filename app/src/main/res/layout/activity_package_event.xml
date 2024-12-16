@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2">
+
+    <include
+        android:id="@+id/headermenu"
+        layout="@layout/package_header"
+        android:layout_width="match_parent"
+        android:layout_height="70dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:cardCornerRadius="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/headermenu">
+
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/maroon2">
+            <ImageView
+                android:id="@+id/event_orgImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/man" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/nameservice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/headermenu"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@+id/card1"
+        android:fontFamily="@font/inter"
+        android:text="Service name: Wedding"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+
+    <TextView
+        android:id="@+id/current_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameservice"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/card1"
+        android:fontFamily="@font/inter"
+        android:text="Price:2500"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/maroon2"
+        android:layout_below="@+id/card1"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/package_recyler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/select_schedule"
+        android:layout_below="@+id/view1"
+        android:layout_marginTop="5dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/select_schedule"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/transparentbg"
+        android:fontFamily="@font/inter"
+        android:text="Proceed"
+        android:textSize="15sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/skip"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/transparentbg"
+        android:fontFamily="@font/inter"
+        android:text="Skip"
+        android:textSize="15sp" />
+
+</RelativeLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/maroon2"
+    android:id="@+id/sidenav"
+    android:layout_gravity="start">
+    <include layout="@layout/activity_header" />
+    <View
+        android:layout_width="match_parent"
+        android:background="#E03681"
+        android:layout_height="2dp">
+    </View>
+    <include layout="@layout/favorite_nav" />
+</LinearLayout>

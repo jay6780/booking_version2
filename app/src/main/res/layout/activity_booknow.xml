@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Mywhite">
+
+    <include
+        layout="@layout/newprofilemenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/headermenu"/>
+
+
+    <RelativeLayout
+        android:id="@+id/backlayout"
+        android:layout_below="@+id/headermenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/back"
+            android:fontFamily="@font/inter"
+            android:text="Hair and Makeup Artists"
+            android:textColor="@color/maroon"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+    </RelativeLayout>
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/backlayout">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/r11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/baseline_person_24" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/avatar"
+            android:fontFamily="@font/inter"
+            android:text="Name"
+            android:textColor="@color/maroon"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/avatar"
+            android:fontFamily="@font/inter"
+            android:text="Age"
+            android:textColor="@color/maroon"
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/age"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/avatar"
+            android:fontFamily="@font/inter"
+            android:text="Address"
+            android:textColor="@color/maroon"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/lenghtofservice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/address"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/avatar"
+            android:fontFamily="@font/inter"
+            android:text="Length of service"
+            android:textColor="@color/maroon"
+            android:textSize="15sp" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/message"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lenghtofservice"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/avatar"
+            android:background="@drawable/round_btn"
+            android:drawableStart="@drawable/mail"
+            android:fontFamily="@font/inter"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Message"
+            android:textColor="@color/maroon" />
+
+        <com.ak.KalendarView
+            android:id="@+id/kalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:layout_below="@+id/message"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            app:calendarBackground="#FFFFFF"
+            app:dateTextStyle="@style/weekText"
+            app:monthTextStyle="@style/weekText"
+            app:nextIcon="@drawable/calendarview_front"
+            app:prevIcon="@drawable/calendarview_back"
+            app:weekTextStyle="@style/weekText" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/myschedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/kalendar"
+            android:layout_marginTop="10dp"
+            android:scrollbars="horizontal" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/proceed"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/myschedule"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:background="@color/pink"
+            android:fontFamily="@font/inter"
+            android:text="Book Apointment"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>
+</RelativeLayout>

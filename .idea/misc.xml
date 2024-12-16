@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android studio projects/My_project_practice/Booking/app/src/main/res/drawable/baseline_home_24.xml" value="0.128" />
+        <entry key="..\:/Android studio projects/My_project_practice/Booking/app/src/main/res/drawable/baseline_logout_24.xml" value="0.128" />
+        <entry key="..\:/Android studio projects/My_project_practice/Booking/app/src/main/res/drawable/baseline_person_24.xml" value="0.128" />
+        <entry key="..\:/Android studio projects/My_project_practice/Booking/app/src/main/res/layout/action_bar_title.xml" value="0.2677083333333333" />
+        <entry key="..\:/Android studio projects/My_project_practice/Booking/app/src/main/res/layout/activity_guesspage.xml" value="0.2147239263803681" />
+        <entry key="..\:/Android studio projects/My_project_practice/Booking/app/src/main/res/layout/activity_header.xml" value="0.26875" />
+        <entry key="..\:/Android studio projects/My_project_practice/Booking/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Android studio projects/My_project_practice/Booking/app/src/main/res/layout/drawerlay.xml" value="0.26875" />
+        <entry key="..\:/Android studio projects/My_project_practice/Booking/app/src/main/res/layout/drawlayout.xml" value="0.33" />
+        <entry key="..\:/Android studio projects/My_project_practice/Booking/app/src/main/res/menu/guess.xml" value="0.2677083333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/drawable/arrow_left.xml" value="0.1545" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/drawable/back_btn.xml" value="0.202" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/drawable/bgbtn.xml" value="0.1395" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/drawable/borderbackground.xml" value="0.1395" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/drawable/borderbackground2.xml" value="0.1395" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/drawable/borderbtn.xml" value="0.208" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/drawable/chat_bubble.xml" value="0.1395" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/drawable/emojo.xml" value="0.1395" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/drawable/lock33.xml" value="0.208" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/drawable/onlineindicator.xml" value="0.1585" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/drawable/open_new_activity.xml" value="0.1545" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/drawable/record_selector.xml" value="0.1545" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/drawable/search_border.xml" value="0.151" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/activity_basic.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/activity_booking_interface.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/activity_bookingmap.xml" value="0.1675929884566054" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/activity_booknow.xml" value="0.1675929884566054" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/activity_chat.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/activity_facedetection.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/activity_filepatch_upload.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/activity_guesspage.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/activity_main2.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/activity_profile_update_admin.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/activity_profile_user.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/activity_provider_profile.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/activity_user_provider.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/admin.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/chat_boxheader.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/chat_header1.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/connected.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/content_basic.xml" value="0.1046875" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/drawlayout.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/emptyadapter.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/fragment_bookings.xml" value="0.33" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/fragment_first.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/fragment_second.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/header.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/home_pageroot.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/item_makeup.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/item_service.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/item_service2.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/layout_default_item_skeleton.xml" value="0.2" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/logout.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/logout_header.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/map_select.xml" value="0.22" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/mapheader.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/mapheader2.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/mapheader3.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/menu.xml" value="0.2" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/newhowmenu.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/newprofile.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/notification.xml" value="0.203125" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/profileheader.xml" value="0.33" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/provider_item.xml" value="0.33" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/savedfooter.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/savedprice.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/selectiontab.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/service_select.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/shimmer1.xml" value="0.2" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/skeleton_layout.xml" value="0.15" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/skeletonlayout_2.xml" value="0.16324786324786325" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/app/src/main/res/layout/user_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/library/src/main/res/layout/layout_default_item_skeleton.xml" value="0.14427083333333332" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/library/src/main/res/layout/layout_shimmer.xml" value="0.14427083333333332" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/photopicker/src/main/res/layout/activity_device_folder.xml" value="0.1203125" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/photopicker/src/main/res/menu/menu_device_folder.xml" value="0.15260416666666668" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/drawable/call_background_bottom_menubar.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/drawable/call_background_chat.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/drawable/call_background_memberlist.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/drawable/call_background_video_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/drawable/call_selector_dialog_video_accept.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/drawable/call_selector_dialog_voice_accept.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/drawable/google_ic_call_answer.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/drawable/google_ic_call_answer_low.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/drawable/google_ic_call_answer_video.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/drawable/google_ic_call_answer_video_low.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/drawable/google_ic_call_decline.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/drawable/google_ic_call_decline_low.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/drawable/google_notification_bg.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/drawable/google_notification_bg_low.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/drawable/google_notification_icon_background.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/layout/call_activity_prebuilt.xml" value="0.14114583333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/layout/call_dialog_invitation.xml" value="0.14114583333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/layout/call_fragment_call.xml" value="0.14114583333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/layout/call_item_inroom_member.xml" value="0.14114583333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/layout/call_layout_incoming.xml" value="0.14114583333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/layout/call_layout_inroom_chat.xml" value="0.14114583333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/layout/call_layout_memberlist.xml" value="0.14114583333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/layout/call_layout_mini_view.xml" value="0.14114583333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/layout/call_layout_notification_small.xml" value="0.14114583333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/layout/call_layout_outgoing.xml" value="0.14114583333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/layout/call_layout_video_foreground.xml" value="0.14114583333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/booking/prebuilt_call/src/main/res/layout/call_layout_waiting.xml" value="0.14114583333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

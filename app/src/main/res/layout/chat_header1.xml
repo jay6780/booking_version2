@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl"
+    android:layout_width="match_parent"
+    android:background="@color/maroon2"
+    android:layout_height="70dp">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:src="@mipmap/back_white" />
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/avatar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="2dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="username"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="normal" />
+
+    <app.m4ntis.blinkingloader.BlinkingLoader
+        android:id="@+id/dotLoading1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_toRightOf="@+id/avatar"
+        app:auto_start="true"
+        android:visibility="gone"
+        app:dot_blinkingColor="@color/white"
+        app:dot_margin="3dp"
+        app:dot_neutralColor="@color/white"
+        app:dot_num_dots="4" />
+    <ImageView
+        android:id="@+id/imgOnline2"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginLeft="-15dp"
+        android:layout_marginTop="27dp"
+        android:layout_toRightOf="@+id/avatar"
+        android:src="@drawable/onlineindicator"
+        android:visibility="gone" />
+</RelativeLayout>
+

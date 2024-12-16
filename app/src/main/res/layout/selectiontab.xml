@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/selectortab"
+    android:visibility="gone"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/card23"
+        app:cardCornerRadius="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/card1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/bgColor">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/menubtn"/>
+
+            <TextView
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:fontFamily="@font/inter"
+                android:textColor="@color/black"
+                android:text="Bookings"/>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card23"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="10dp"
+        app:cardCornerRadius="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/card2"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/bgColor">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/calendarbtn"/>
+
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:fontFamily="@font/inter"
+                android:textColor="@color/black"
+                android:text="Calendar"/>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_toRightOf="@+id/card23"
+        app:cardCornerRadius="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/card3"
+            android:gravity="center"
+            android:background="@color/bgColor">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/maps_btn"/>
+
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:fontFamily="@font/inter"
+                android:textColor="@color/black"
+                android:text="Maps"/>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

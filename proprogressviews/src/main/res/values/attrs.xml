@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="DoubleArcProgress">
+        <attr name="arcRadius" format="dimension"/>
+        <attr name="colorofArc" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="DottedArcProgress">
+        <attr name="dots_radius" format="dimension"/>
+        <attr name="dots_color" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="CircleLineProgress">
+        <attr name="circle_radius" format="dimension"/>
+        <attr name="circle_color" format="color"/>
+        <attr name="line_radius" format="dimension"/>
+        <attr name="line_color" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="CircleArcProgress">
+        <attr name="circle_size" format="dimension"/>
+        <attr name="color_circle" format="color"/>
+        <attr name="arc_radius" format="dimension"/>
+        <attr name="arc_color" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="DotsZoomProgress">
+        <attr name="inner_radius" format="dimension"/>
+        <attr name="inner_color" format="color"/>
+        <attr name="mid_radius" format="dimension"/>
+        <attr name="mid_color" format="color"/>
+        <attr name="outer_radius" format="dimension"/>
+        <attr name="outer_color" format="color"/>
+        <attr name="min_radius" format="dimension"/>
+        <attr name="zoom_speed" format="float"/>
+        <attr name="mid_alpha" format="integer"/>
+        <attr name="outer_alpha" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="FadeCircleProgress">
+        <attr name="radius" format="dimension"/>
+        <attr name="color" format="color"/>
+        <attr name="speed" format="integer"/>
+        <attr name="fade_speed" format="integer"/>
+        <attr name="minimum_radius" format="dimension"/>
+    </declare-styleable>
+
+</resources>

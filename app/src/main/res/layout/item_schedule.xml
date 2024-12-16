@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/myimage"
+            android:layout_marginTop="5dp"
+            android:layout_width="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_height="40dp" />
+        <TextView
+            android:id="@+id/schedule_name"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/myimage"
+            android:textSize="15sp"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/inter"
+            android:text="name"
+            android:textStyle="normal" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/schedule_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="18sp"
+        android:layout_marginStart="20dp"
+        android:textStyle="normal"
+        android:text="date: "
+        android:fontFamily="@font/inter"/>
+
+    <View
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:background="@color/bgColor"
+        android:layout_height="2dp"/>
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.singh.daman.proprogressviews.DottedArcProgress
+        android:id="@+id/loadingBar"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_centerHorizontal="true"
+        app:dots_color="@android:color/black"
+        app:dots_radius="20dp" />
+</LinearLayout>

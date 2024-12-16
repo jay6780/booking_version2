@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/eventHome"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Home" />
+    <item
+        android:id="@+id/eventCalendar"
+        android:icon="@mipmap/calendar"
+        android:title="Calendar" />
+    <item
+        android:id="@+id/eventprofile"
+        android:icon="@drawable/baseline_person_24"
+        android:title="profile" />
+</menu>

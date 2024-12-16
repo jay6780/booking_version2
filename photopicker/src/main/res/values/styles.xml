@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.PhotoPicker" parent="android:Theme.DeviceDefault.Light">
+        <item name="android:actionBarStyle">@style/Theme.PhotoPicker.ActionBar.Opaque</item>
+        <item name="android:actionModeCloseDrawable">@drawable/ic_close_black_24dp</item>
+        <item name="android:fontFamily">@font/inter</item>
+    </style>
+
+    <style name="Theme.PhotoPicker.ActionBar" parent="android:Widget.ActionBar">
+        <item name="android:displayOptions">homeAsUp|showTitle</item>
+        <item name="android:titleTextStyle">@style/Theme.PhotoPicker.ActionBar.TitleText</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_backwhite</item>
+        <item name="android:fontFamily">@font/inter</item>
+    </style>
+
+    <style name="Theme.PhotoPicker.ActionBar.Opaque">
+        <item name="android:background">@color/opaque_action_bar</item>
+        <item name="android:fontFamily">@font/inter</item>
+    </style>
+
+    <style name="Theme.PhotoPicker.ActionBar.TitleText">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/inter</item>
+    </style>
+
+</resources>

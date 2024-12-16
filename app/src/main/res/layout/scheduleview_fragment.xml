@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/dots"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentEnd="true"
+        android:src="@mipmap/dots" />
+
+    <com.ak.KalendarView
+        android:id="@+id/kalendar"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_below="@+id/dots"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        app:calendarBackground="#FFFFFF"
+        app:dateTextStyle="@style/weekText"
+        app:monthTextStyle="@style/weekText"
+        app:nextIcon="@drawable/calendarview_front"
+        app:prevIcon="@drawable/calendarview_back"
+        app:selectedIndicator="@drawable/custom_select_date"
+        app:weekTextStyle="@style/weekText" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/myschedule"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/kalendar" />
+</RelativeLayout>

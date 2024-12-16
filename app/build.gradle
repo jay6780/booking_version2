@@ -1,0 +1,107 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+android {
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.hair.booking"
+        minSdk 21
+        targetSdk 28
+        versionCode 100
+        versionName "1.1.29"
+
+        dexOptions {
+            jumboMode = true
+        }
+        multiDexEnabled true
+        //zego key
+        buildConfigField "long", "APP_ID", "186663580"
+        buildConfigField "String", "APP_SIGN", "\"8c57646a3cd1ccb96fc02304a8836dbec028ac2c9ed44eaaa62ed18ec0980411\""
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("./booking.jks")
+            storePassword "123456"
+            keyAlias "booking"
+            keyPassword "123456"
+        }
+        release {
+            storeFile file("./booking.jks")
+            storePassword "123456"
+            keyAlias "booking"
+            keyPassword "123456"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+
+
+
+dependencies {
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'com.google.firebase:firebase-storage:20.3.0'
+    implementation 'com.google.firebase:firebase-database:20.3.0'
+    implementation 'com.airbnb.android:lottie:5.2.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation(files("libs/emoticon.aar"))
+    implementation project(path: ':gifpack-giphy')
+    implementation project(path: ':emoticongifkeyboard')
+    implementation project(path: ':ucrop')
+    implementation project(path: ':kalendarview')
+    implementation project(path: ':photopicker')
+    implementation project(path: ':library')
+    implementation project(path: ':proprogressviews')
+    implementation project(path: ':reviewratings')
+    implementation project(path: ':ratingstarred')
+    implementation project(path: ':bubblenavigation')
+    implementation project(path: ':blinkingloader')
+//    implementation project(path: ':gifpack-giphy')
+    testImplementation 'junit:junit:4.13.2'
+    implementation 'com.orhanobut:dialogplus:1.11@aar'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'io.github.youth5201314:banner:2.2.2'
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    implementation 'com.google.android.libraries.places:places:3.1.0'
+    implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    annotationProcessor  'com.github.bumptech.glide:compiler:4.12.0'
+    implementation 'com.google.android.gms:play-services-vision:20.1.3'
+    implementation "androidx.multidex:multidex:2.0.1"
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.github.Brooks0129:ThanosSnap:v1.0'
+    implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
+    implementation 'com.github.clans:fab:1.6.4'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation'com.github.huburt-Hu:NewbieGuide:v2.4.0'
+    implementation "com.github.YarikSOffice:lingver:1.3.0"
+    implementation 'com.akexorcist:localization:1.2.11'
+    implementation 'io.github.azhon:appupdate:4.3.6'
+    implementation 'com.github.razaghimahdi:Android-Loading-Dots:1.3.2'
+    implementation 'com.github.MasayukiSuda:BubbleLayout:v1.2.2'
+    implementation 'com.facebook.android:facebook-login:latest.release'
+    implementation("com.google.android.gms:play-services-auth:21.3.0")
+}

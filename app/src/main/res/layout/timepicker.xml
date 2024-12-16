@@ -1,0 +1,21 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <include layout="@layout/logout_header"/>
+
+       <TextView
+           android:id="@+id/time"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"
+           android:fontFamily="@font/inter"
+           android:textStyle="bold"
+           android:textSize="20sp"
+           android:layout_marginBottom="10dp"
+           android:text="0"
+           android:layout_gravity="center"/>
+
+    <include layout="@layout/timepickerfooter"/>
+</LinearLayout>

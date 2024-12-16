@@ -1,0 +1,143 @@
+<resources>
+    <string name="app_name">STYLESYNC</string>
+    <string name="open">Open Navigation Drawer</string>
+    <string name="close">Close Navigation Drawer</string>
+    <string name="myProfile">My Profile</string>
+    <string name="Apikey">AIzaSyD7ICzl-EfvraMPIZK7mD6I5w9H0-YQJxk</string>
+    <string name="appId">186663580</string>
+    <string name="appSign">8c57646a3cd1ccb96fc02304a8836dbec028ac2c9ed44eaaa62ed18ec0980411</string>
+    <string name="faceswapapikey">cm1yeptoj0008l5035mplahox</string>
+    <string name="faceswapapikey2">cm253vcsi0002mj03imjaqtkn</string>
+    <string-array name="gender_array">
+        <item>Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="discount_array">
+        <item>Discount</item>
+        <item>30</item>
+        <item>50</item>
+    </string-array>
+
+    <string name="event_name">Pangalan ng Event</string>
+    <string name="price">Presyo</string>
+    <string name="Saved">Na-save</string>
+    <string name="comment">comment</string>
+    <string name="rate_now">I-rate ngayon</string>
+    <string name="service_name">Pangalan ng serbisyo</string>
+    <string name="saved">Na-save</string>
+    <string name="age">Edad</string>
+    <string name="service_lenght">Tagal ng serbisyo</string>
+    <string name="map">Mapa</string>
+    <string name="years">Taon ng Karanasan</string>
+    <string name="taon">Taon</string>
+    <string name="name">Pangalan</string>
+    <string name="send_msg">Magpadala ng mensahe</string>
+    <string name="signup">Mag-sign Up</string>
+    <string name="login">Login</string>
+    <string name="createOrganizer">Gumawa ng event organizer account</string>
+    <string name="fullname">Buong pangalan</string>
+    <string name="email">Sulat troniko</string>
+    <string name="username">Alyas</string>
+    <string name="phone">Numero ng telepono</string>
+    <string name="password">Lihim na salita</string>
+    <string name="confirmpassword">Kumpirmahin ang Lihim na salita</string>
+    <string name="signIn">Mag-sign In</string>
+    <string name="language">Wika</string>
+    <string name="welcome">Maligayang pagdating</string>
+    <string name="welcomemsg">Maligayang pagdating sa StyleSync – Ang Iyong Ultimate Destination para sa Kagandahan at Estilo! Tuklasin ang mga nangungunang serbisyo sa pagpapaganda, mag-book ng mga appointment nang madali, at baguhin ang iyong hitsura nang walang kahirap-hirap!</string>
+    <string name="personal">Gumawa ng personal na account</string>
+    <string name="signmsg"> Mag-log in sa StyleSync at i-unlock ang pinakamahusay sa kagandahan at istilo. Ang iyong susunod na pagbabago ay isang click na lang!</string>
+    <string name="signupmsg">Mag-sign up ngayon upang matuklasan at mag-book ng mga nangungunang serbisyo sa pagpapaganda sa iyong lugar!</string>
+    <string name="restmsg">I-reset ang Iyong Password at Bumalik sa Kagandahan gamit ang StyleSync. Huwag mag-alala, tutulungan ka naming makabalik sa tamang oras!</string>
+    <string name="add_event">Magdagdag ng kaganapan</string>
+    <string name="selectimg">Mangyaring pumili ng larawan</string>
+    <string name="crop_failed">Nabigo ang pag-crop</string>
+    <string name="validService">Mangyaring magbigay ng wastong pangalan ng serbisyo, presyo, larawan</string>
+    <string name="failedUrl">Nabigong makuha ang URL ng larawan</string>
+    <string name="failedimgupload">Nabigong mag-upload ng larawan</string>
+    <string name="forgotpassword">Nakalimutan ang Password?</string>
+    <string name="recovertEmail">Ilagay ang ginamit na sulat troniko</string>
+    <string name="resetpassword">I-reset ang password</string>
+    <string name="category">Mga kategorya</string>
+    <string name="makeup">pampaganda</string>
+    <string name="desired">Hanapin ang iyong Gustong Artist/Organizer</string>
+    <string name="event">Pag-aayos</string>
+    <string name="organizing">ng Kaganapan</string>
+    <string name="topArtist">Mga Nangungunang Artist</string>
+    <string name="viewAll">Tingnan Lahat</string>
+    <string name="topOrganizers">Mga Nangungunang Organizer</string>
+    <string name="address">Lokasyon</string>
+    <string name="appointment">Gumawa ng Appointment</string>
+    <string name="updateprofile">I-update ang profile</string>
+    <string name="privacy">Pagkapribado</string>
+    <string name="historybook">Kasaysayan ng Pag-book</string>
+    <string name="help">Tulong at Suporta</string>
+    <string name="settings">Mga setting</string>
+    <string name="logout">Mag Logout</string>
+    <string name="booking">Pagbu-book</string>
+    <string name="areyousure">Ituloy ang pag pag logout?</string>
+    <string name="Yes">Oo</string>
+    <string name="No">Hindi</string>
+    <string name="updateProfile">I-update ang iyong profile?</string>
+    <string name="hmua">Tagapag-ayos ng Buhok at Make-up</string>
+    <string name="eventArtists">Mga Organizer ng Kaganapan</string>
+    <string name="favorites">Hanapin ang iyong Paboritong Artist/Organizer</string>
+    <string name="favoriteArtists">Ang mga paborito kong makeup artist</string>
+    <string name="favoriteOrganizers">Ang aking mga paboritong Organizer</string>
+    <string name="artistsdetails">Detalye ng provider</string>
+    <string name="yearss">Taon</string>
+    <string name="Available_chat">Mensahe</string>
+    <string name="Booking_history">History ng booking</string>
+    <string name="My_Favorites">Aking Mga Paborito</string>
+    <string name="Add_comment">Magdagdag ng komento</string>
+    <string name="reviewcontent_error">Mangyaring ipasok ang iyong nilalaman ng pagsusuri</string>
+    <string name="addratingError">Mangyaring magbigay ng rating</string>
+    <string name="selectimg_error">Mangyaring pumili ng larawan</string>
+    <string name="errorupload">Nabigong mag-upload ng larawan</string>
+    <string name="noPhotoselectError">Walang napiling mga larawan</string>
+    <string name="review_success">Matagumpay na na-save ang pagsusuri</string>
+    <string name="review_failed">Nabigong i-save ang review</string>
+    <string name="service_msg">Anong serbisyo ang maaari mong ibigay?</string>
+    <string name="setupservice">I-set up ang iyong Serbisyo</string>
+    <string name="discount">Magdagdag ng Diskwento</string>
+    <string name="discountSaved">Na-save ang diskwento</string>
+    <string name="errorSavedDiscount">Nabigong i-save ang diskwento</string>
+    <string name="select_discount">Mangyaring pumili ng diskwento</string>
+    <string name="nodiscount">Walang available na diskwento maghintay muli</string>
+    <string name="discountTitle">Diskwento</string>
+    <string name="restartApp">Hindi tumpak ang lokasyon mangyaring i-restart ang app</string>
+    <string name="restart">I restart</string>
+    <string name="restartmsg">I-restart ang app?</string>
+    <string name="clearedDiscount">I-clear ang diskwento?</string>
+    <string name="discount_clearedsucess">Na-clear na ang diskwento</string>
+    <string name="discountError">Walang nakitang diskwento para sa provider na ito</string>
+    <string name="addinfo">Magdagdag ng impormasyon</string>
+    <string name="deletesure">Sigurado ka bang gusto mong tanggalin?</string>
+    <string name="eventTitle">Detalye ng event organizer</string>
+    <string name="hmudetails">Detalye ng Make up artist</string>
+    <string name="event_details">Detalye ng event organizer</string>
+    <string name="explore">Galugarin</string>
+    <string name="switch_account">Lumipat ng account</string>
+    <string name="sign_in">Naka-sign in</string>
+    <string name="other_account">Ibang account</string>
+    <string name="book_tohavehistory">Mag book para mag karoon ng history</string>
+    <string name="cancel">Mag cancel</string>
+    <string name="cancel_msg">Kanselahin ang Booking</string>
+    <string name="sure_cancel">Sigurado ka bang gusto mong kanselahin ang booking na ito?</string>
+    <string name="yes">Oo</string>
+    <string name="no">Hindi</string>
+    <string name="cancelling_book">Kinakansela ang booking...</string>
+    <string name="appointment_failed">Nabigo ang appointment</string>
+
+
+    <string-array name="language_array">
+        <item>Default</item>
+        <item>English</item>
+        <item>Filipino</item>
+    </string-array>
+
+
+
+</resources>
