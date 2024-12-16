@@ -3,6 +3,7 @@ package com.hair.booking.activity.MainPageActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -34,6 +35,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.hair.booking.R;
 import com.hair.booking.activity.Application.TinkerApplications;
+import com.hair.booking.activity.tools.Model.Usermodel;
+import com.hair.booking.activity.tools.Service.MessageNotificationService;
 import com.hair.booking.activity.tools.Utils.AppConstans;
 import com.hair.booking.activity.tools.Utils.SPUtils;
 
@@ -46,9 +49,14 @@ public class google_login extends AppCompatActivity {
     private SignInClient oneTapClient;
     private BeginSignInRequest signInRequest;
     private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
+    private DatabaseReference guess, event, admin;
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 101;
+    private boolean isGuess = false;
+    private boolean isAdmin = false;
+    private boolean isEvent = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +69,9 @@ public class google_login extends AppCompatActivity {
         changeStatusBarColor(getResources().getColor(R.color.maroon2));
 
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference("Guess");
+        guess = FirebaseDatabase.getInstance().getReference("Guess");
+        event = FirebaseDatabase.getInstance().getReference("Events");
+        admin = FirebaseDatabase.getInstance().getReference("ADMIN");
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -78,6 +88,7 @@ public class google_login extends AppCompatActivity {
                 .build();
         signIn();
     }
+
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
@@ -95,7 +106,7 @@ public class google_login extends AppCompatActivity {
                 Log.d(TAG, "Google Sign-In email: " + email);
 
                 firebaseAuthWithGoogle(account.getIdToken());
-                SPUtils.getInstance().put(AppConstans.emailAuthenticaion,email);
+                SPUtils.getInstance().put(AppConstans.emailAuthenticaion, email);
                 Log.d(TAG, "firebaseAuthWithGoogle: " + account.getId());
 
             } catch (ApiException e) {
@@ -126,45 +137,95 @@ public class google_login extends AppCompatActivity {
 
 
     private void updateUI(FirebaseUser user) {
-        TinkerApplications app = (TinkerApplications) getApplicationContext();
         if (user != null) {
             String uid = user.getUid();
             String name = user.getDisplayName();
             String email = user.getEmail();
             String username = user.getDisplayName();
             String phone = user.getPhoneNumber() != null ? user.getPhoneNumber() : "N/A";
-
-            mDatabase.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (!snapshot.exists()) {
-                        saveUserDetailsToDatabase(uid, name, email, username, phone);
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Log.e(TAG, "Database error: " + error.getMessage());
-                }
-            });
-
-            Toast.makeText(google_login.this, "Welcome, " + name, Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(google_login.this, newHome.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-            app.updatelogin3(true, google_login.this);
-            startActivity(intent);
-            finish();
+            checkAndSaveUserDetails(uid, name, email, username, phone);
         }
     }
 
-    private void saveUserDetailsToDatabase(String uid, String name, String email, String username, String phone) {
-        DatabaseReference userRef = mDatabase.child(uid);
-        userRef.child("name").setValue(name);
-        userRef.child("email").setValue(email);
-        userRef.child("username").setValue(username);
-        userRef.child("phone").setValue(phone);
-        Log.d(TAG, "User details saved successfully.");
+
+    private void checkAndSaveUserDetails(String uid, String name, String email, String username, String phone) {
+        // Create a reference for all three databases
+        DatabaseReference guessRef = guess.child(uid);
+        DatabaseReference adminRef = admin.child(uid);
+        DatabaseReference eventRef = event.child(uid);
+
+        adminRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    directohome(false, true, false);
+                } else {
+                    eventRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot eventSnapshot) {
+                            if (eventSnapshot.exists()) {
+                                directohome(false, true, false);
+                            } else {
+                                guessRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot guessSnapshot) {
+                                        if (guessSnapshot.exists()) {
+                                            directohome( false, true, false);
+                                        } else {
+                                           savedataandDirect(guessRef, name, email, username, phone);
+                                           redirectToHome();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                        // Handle error here if needed
+                                    }
+                                });
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error here if needed
+            }
+        });
     }
+
+    private void savedataandDirect(DatabaseReference guessRef, String name, String email, String username, String phone) {
+        guessRef.child("name").setValue(name);
+        guessRef.child("email").setValue(email);
+        guessRef.child("username").setValue(username);
+        guessRef.child("phone").setValue(phone);
+    }
+
+    private void directohome(boolean isAdmin, boolean isGuess, boolean isEvent) {
+        if(isAdmin){
+            redirectToHome();
+        }else if(isEvent){
+            redirectToHome();
+        }else if(isGuess) {
+            redirectToHome();
+        }
+
+    }
+
+    private void redirectToHome() {
+        Intent intent = new Intent(google_login.this, newHome.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        TinkerApplications app = (TinkerApplications) getApplicationContext();
+        app.updatelogin3(true, google_login.this);
+        startActivity(intent);
+        finish();
+    }
+
 
     private void changeStatusBarColor(int color) {
         Window window = getWindow();

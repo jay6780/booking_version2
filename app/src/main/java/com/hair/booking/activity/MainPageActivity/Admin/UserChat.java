@@ -244,6 +244,9 @@ public class UserChat extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        Intent userChat = new Intent(getApplicationContext(), newHome.class);
+        startActivity(userChat);
+        overridePendingTransition(0, 0);
         finish();
         super.onBackPressed();
     }
