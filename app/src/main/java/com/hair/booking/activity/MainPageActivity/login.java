@@ -198,7 +198,7 @@ public class login extends AppCompatActivity {
                         .setLayoutRes(R.layout.creat_accountguide)
                 )
                 .addGuidePage(GuidePage.newInstance()
-                        .addHighLight(facebook, HighLight.Shape.ROUND_RECTANGLE, 1)
+                        .addHighLight(google, HighLight.Shape.ROUND_RECTANGLE, 1)
                         .setLayoutRes(R.layout.google_hint)
                 )
                 .show();
