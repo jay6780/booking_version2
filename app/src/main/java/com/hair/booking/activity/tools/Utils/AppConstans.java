@@ -88,4 +88,5 @@ public class AppConstans {
     public static final String RecentPackage_event = "RecentPackage_event";
     public static final String facebookEmail ="facebookEmail";
     public static final String emailAuthenticaion = "emainAuthenticaion";
+    public static final String booknumEvent = "booknumEvent";
 }

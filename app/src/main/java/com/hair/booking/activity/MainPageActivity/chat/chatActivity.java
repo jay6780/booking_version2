@@ -315,7 +315,6 @@ public class chatActivity extends AppCompatActivity implements OnMapReadyCallbac
             Log.d(TAG, "no availedmessage");
         } else {
             messageText.setText(cancelledmessage);
-            messageText.requestFocus();
             messageText.setSelection(messageText.getText().length());
             sendMessage();
         }
@@ -392,7 +391,6 @@ public class chatActivity extends AppCompatActivity implements OnMapReadyCallbac
             Log.d(TAG, "no availedmessage");
         } else {
             messageText.setText(availedmessage);
-            messageText.requestFocus();
             messageText.setSelection(messageText.getText().length());
             sendMessage();
         }
@@ -403,7 +401,6 @@ public class chatActivity extends AppCompatActivity implements OnMapReadyCallbac
             Log.d(TAG, "no image url");
         } else {
             messageText.setText(imageUrl);
-            messageText.requestFocus();
             messageText.setSelection(messageText.getText().length());
             sendMessage();
         }

@@ -123,7 +123,7 @@ public class newHome extends AppCompatActivity {
     private String imageUrl;
     String bookprovideremail = SPUtils.getInstance().getString(AppConstans.bookprovideremail);
     private LinearLayout home,privacy;
-    private RelativeLayout user_viewsmenu,admin_menus;
+    private RelativeLayout user_viewsmenu,admin_menus,default_menu;
     private LinearLayout setSuperAdmin,setEventAdmin;
     private ImageView adminbell,event_bell;
     private TextView badge_count_admin,event_badge;
@@ -159,6 +159,7 @@ public class newHome extends AppCompatActivity {
         adminPager.setAdapter(adminViewpagerAdapter);
         viewPager.setAdapter(viewPagerAdapter);
         eventPager.setAdapter(eventViewpagerAdapter);
+        default_menu = findViewById(R.id.default_menu);
         loadUserDetails();
         initDraWtoggle();
         initDraWtoggle2();
@@ -598,22 +599,14 @@ public class newHome extends AppCompatActivity {
     }
     private void initShowbook() {
         TextView badgeCount = findViewById(R.id.badge_count);
-        String badgenum = SPUtils.getInstance().getString(AppConstans.booknum);
-        if(badgenum!=null){
-            badgeCount.setVisibility(View.VISIBLE);
-            badgeCount.setText(badgenum);
-        }else{
+        String badgenum = SPUtils.getInstance().getString(AppConstans.booknum,"0");
+        Log.d("bookCount","BookCountUser: "+badgenum);
+        if(badgenum == null) {
             badgeCount.setText("0");
+          return;
         }
-        bell.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), history_book.class);
-                intent.putExtra("bookprovideremail", bookprovideremail);
-                startActivity(intent);
-            }
-        });
-
+        badgeCount.setVisibility(View.VISIBLE);
+        badgeCount.setText(badgenum);
     }
     private void initAdminBook() {
         startService(new Intent(this, MessageNotificationService.class));
@@ -819,8 +812,11 @@ public class newHome extends AppCompatActivity {
                 } else if (v.getId() == R.id.setEventAdmin) {
                     Intent intent = new Intent(getApplicationContext(), setEvent_admin.class);
                     startActivity(intent);
-                } else if (v.getId() == R.id. event_bell) {
+                } else if (v.getId() == R.id.event_bell) {
                     Intent intent = new Intent(getApplicationContext(), history_book_event.class);
+                    startActivity(intent);
+                } else if (v.getId() == R.id.bell) {
+                    Intent intent = new Intent(getApplicationContext(), history_book.class);
                     startActivity(intent);
                 }
             }
@@ -844,6 +840,7 @@ public class newHome extends AppCompatActivity {
         findViewById(R.id.setSuperAdmin).setOnClickListener(clickListener);
         findViewById(R.id.setEventAdmin).setOnClickListener(clickListener);
         findViewById(R.id.event_bell).setOnClickListener(clickListener);
+        findViewById(R.id.bell).setOnClickListener(clickListener);
     }
 
 
@@ -1009,8 +1006,9 @@ public class newHome extends AppCompatActivity {
 
     private void initEventbook() {
         startService(new Intent(this, MessageNotificationService.class));
-        String badgenum = SPUtils.getInstance().getString(AppConstans.booknumAdmin, "0");
-        if (badgenum != null) {
+        String badgenum = SPUtils.getInstance().getString(AppConstans.booknumEvent);
+        Log.d("booknumEvent","Mybooknum: "+badgenum);
+        if (badgenum == null) {
             event_badge.setText("0");
             return;
         }
@@ -1256,6 +1254,7 @@ public class newHome extends AppCompatActivity {
         usernameTextAdin.setVisibility(View.VISIBLE);
         userEmailAdmin.setVisibility(View.VISIBLE);
         if (isAdmin) {
+            default_menu.setVisibility(View.GONE);
             event_bell.setVisibility(View.GONE);
             event_badge.setVisibility(View.GONE);
             adminbell.setVisibility(View.VISIBLE);
@@ -1280,6 +1279,7 @@ public class newHome extends AppCompatActivity {
             home.setVisibility(View.GONE);
             privacy.setVisibility(View.GONE);
         }else if (isEvent){
+            default_menu.setVisibility(View.GONE);
             event_bell.setVisibility(View.VISIBLE);
             event_badge.setVisibility(View.VISIBLE);
             adminbell.setVisibility(View.GONE);
@@ -1308,6 +1308,7 @@ public class newHome extends AppCompatActivity {
             initProfile(user);
             initUserInfo_event(user.getImage(),user.getUsername(),user.getAddress(),user.getEmail());
         }else{
+            default_menu.setVisibility(View.GONE);
             event_bell.setVisibility(View.GONE);
             event_badge.setVisibility(View.GONE);
             adminbell.setVisibility(View.GONE);

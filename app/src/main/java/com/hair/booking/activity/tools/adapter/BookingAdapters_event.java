@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.hair.booking.activity.Fragments.AdminFrag.CancelFragment_admin;
+import com.hair.booking.activity.Fragments.eventFrag.CancelFragment_event;
 import com.hair.booking.activity.Fragments.eventFrag.CompleteFragment_event;
 import com.hair.booking.activity.Fragments.eventFrag.HistoryBookFragment_event;
 
@@ -23,7 +23,7 @@ public class BookingAdapters_event extends FragmentPagerAdapter {
                 fragment = new HistoryBookFragment_event();
                 break;
             case 1:
-                fragment = new CancelFragment_admin();
+                fragment = new CancelFragment_event();
                 break;
             case 2:
                 fragment = new CompleteFragment_event();

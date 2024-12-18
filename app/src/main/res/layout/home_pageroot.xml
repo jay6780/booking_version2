@@ -11,9 +11,13 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <include
+            layout="@layout/default_menu"
+            android:layout_width="match_parent"
+            android:layout_height="115dp" />
 <LinearLayout
     android:id="@+id/admin_linear"
     android:layout_width="match_parent"
@@ -21,6 +25,7 @@
     android:visibility="gone"
     android:layout_above="@+id/admin_bottomnav"
     android:orientation="vertical">
+
     <include
         layout="@layout/menu"
         android:layout_width="match_parent"

@@ -29,15 +29,15 @@ import com.hair.booking.activity.tools.Model.BookingId;
 import com.hair.booking.activity.tools.Utils.AppConstans;
 import com.hair.booking.activity.tools.Utils.SPUtils;
 import com.hair.booking.activity.tools.adapter.BookemptyAdapter;
-import com.hair.booking.activity.tools.adapter.Completebook_adapter_event;
+import com.hair.booking.activity.tools.adapter.CancelBookAdapter;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class CompleteFragment_event extends Fragment {
+public class CancelFragment_event extends Fragment {
     private RecyclerView bookrecycler;
-    private Completebook_adapter_event bookingAdapter;
+    private CancelBookAdapter bookingAdapter;
     private List<Booking2> bookingList = new ArrayList<>();
     private BookemptyAdapter nodata;
     private String TAG = "history_book";
@@ -51,7 +51,7 @@ public class CompleteFragment_event extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.history_fragment, container, false);
         bookrecycler = view.findViewById(R.id.historyRecycler);
-        bookingAdapter = new Completebook_adapter_event(bookingList, getContext());
+        bookingAdapter = new CancelBookAdapter(bookingList, getContext());
         bookrecycler.setAdapter(bookingAdapter);
         bookrecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         nodata = new BookemptyAdapter(getContext());
@@ -107,7 +107,7 @@ public class CompleteFragment_event extends Fragment {
 
     private void fetchBookIds(List<String> chatIds) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference mybookRef = database.getReference("Completebook");
+        DatabaseReference mybookRef = database.getReference("CancelbookArtist");
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         if (currentUser != null) {
@@ -159,10 +159,10 @@ public class CompleteFragment_event extends Fragment {
                                 );
                                 bookingList.add(booking);
                                 booknumber++;
-                                String booknum = String.valueOf(booknumber);
-                                SPUtils.getInstance().put(AppConstans.booknumEvent, booknum);
+                                SPUtils.getInstance().put(AppConstans.booknumEvent, String.valueOf(booknumber));
                                 Log.d(TAG, "bookNum: " + booknumber);
                             }
+
                         } else {
                             Log.d("HistoryBook", "No booking found for chat ID: " + chatId);
                         }
@@ -171,6 +171,7 @@ public class CompleteFragment_event extends Fragment {
                         if (chatIds.indexOf(chatId) == chatIds.size() - 1) {
                             if (bookingList.isEmpty()) {
                                 bookingAdapter.notifyDataSetChanged();
+                                bookrecycler.setAdapter(nodata);
                             } else {
                                 bookingAdapter.notifyDataSetChanged();
                                 bookrecycler.setAdapter(bookingAdapter);

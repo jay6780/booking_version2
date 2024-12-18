@@ -194,6 +194,9 @@ public class HistoryBookFragment extends Fragment {
                 );
                 bookingList.add(booking);
                 booknumber++;
+                String booknum = String.valueOf(booknumber);
+                SPUtils.getInstance().put(AppConstans.booknum, booknum);
+                Log.d(TAG, "bookNum: " + booknum);
             }
         } else {
             Log.d("HistoryBook", "No booking found for chat ID: " + chatId);
@@ -204,12 +207,9 @@ public class HistoryBookFragment extends Fragment {
             if (bookingList.isEmpty()) {
                 bookingAdapter.notifyDataSetChanged();
                 bookrecycler.setAdapter(nodata);
-                SPUtils.getInstance().put(AppConstans.booknum, "0");
             } else {
                 bookingAdapter.notifyDataSetChanged();
                 bookrecycler.setAdapter(bookingAdapter);
-                SPUtils.getInstance().put(AppConstans.booknum, String.valueOf(booknumber));
-                Log.d(TAG, "bookNum: " + booknumber);
             }
         }
     }

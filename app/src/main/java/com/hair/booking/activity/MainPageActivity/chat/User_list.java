@@ -103,6 +103,14 @@ public class User_list extends AppCompatActivity {
             }
         });
 
+        bell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), history_book.class);
+                startActivity(intent);
+            }
+        });
+
 
         backBtn.setOnClickListener(view -> onBackPressed());
         deleteBtn.setOnClickListener(view -> showDeleteConfirmation());
@@ -113,21 +121,13 @@ public class User_list extends AppCompatActivity {
         startService(new Intent(this, MessageNotificationService.class));
         TextView badgeCount = findViewById(R.id.badge_count);
         String badgenum = SPUtils.getInstance().getString(AppConstans.booknum);
-        if(badgenum == null){
+        if(badgenum == null) {
             badgeCount.setText("0");
-            SPUtils.getInstance().put(AppConstans.booknum, "0");
-        }else{
-            badgeCount.setVisibility(View.VISIBLE);
-            badgeCount.setText(badgenum);
-
+            return;
         }
-        bell.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), history_book.class);
-                startActivity(intent);
-            }
-        });
+
+        badgeCount.setVisibility(View.VISIBLE);
+        badgeCount.setText(badgenum);
 
     }
 
@@ -324,8 +324,8 @@ public class User_list extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent userChat = new Intent(getApplicationContext(), newHome.class);
+        userChat.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(userChat);
-        overridePendingTransition(0, 0);
         finish();
         super.onBackPressed();
     }

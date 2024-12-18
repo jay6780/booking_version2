@@ -118,15 +118,15 @@ public class Guess_summary extends AppCompatActivity {
     private void initShowbook() {
         startService(new Intent(this, MessageNotificationService.class));
         TextView badgeCount = findViewById(R.id.badge_count);
-        String badgenum = SPUtils.getInstance().getString(AppConstans.booknumAdmin);
+        String badgenum = SPUtils.getInstance().getString(AppConstans.booknum);
         if(badgenum == null){
             badgeCount.setText("0");
-            SPUtils.getInstance().put(AppConstans.booknumAdmin, "0");
-        }else{
-            badgeCount.setVisibility(View.VISIBLE);
-            badgeCount.setText(badgenum);
-
+            return;
         }
+
+        badgeCount.setVisibility(View.VISIBLE);
+        badgeCount.setText(badgenum);
+
         msgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
