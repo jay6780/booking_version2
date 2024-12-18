@@ -96,7 +96,7 @@ public class newHome extends AppCompatActivity {
     private ViewPagerAdapter viewPagerAdapter;
     private AdminViewpagerAdapter adminViewpagerAdapter;
     private EventViewpagerAdapter eventViewpagerAdapter;
-    private LinearLayout adminMenu,rootViews,event_viewpager,update;
+    private LinearLayout adminMenu,event_viewpager,update;
     private DatabaseReference guessRef, adminRef,serviceRef,bookId,events;
     private FirebaseAuth mAuth;
     private String email ="s.realamiler@gmail.com";
@@ -137,7 +137,6 @@ public class newHome extends AppCompatActivity {
         initEventView();
         initClear();
         initAppUpdate();
-        rootViews = findViewById(R.id.root_view);
         sidenav = findViewById(R.id.sidenav);
         changeStatusBarColor(getResources().getColor(R.color.white2));
         initSkeleton();
@@ -600,12 +599,11 @@ public class newHome extends AppCompatActivity {
     private void initShowbook() {
         TextView badgeCount = findViewById(R.id.badge_count);
         String badgenum = SPUtils.getInstance().getString(AppConstans.booknum);
-        if(badgenum.isEmpty()){
-            badgeCount.setText("0");
-        }else{
+        if(badgenum!=null){
             badgeCount.setVisibility(View.VISIBLE);
             badgeCount.setText(badgenum);
-
+        }else{
+            badgeCount.setText("0");
         }
         bell.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -617,16 +615,16 @@ public class newHome extends AppCompatActivity {
         });
 
     }
-    private void initAdminBook(){
+    private void initAdminBook() {
         startService(new Intent(this, MessageNotificationService.class));
-        String badgenum = SPUtils.getInstance().getString(AppConstans.booknumAdmin,"0");
-        if(badgenum.isEmpty()){
+        String badgenum = SPUtils.getInstance().getString(AppConstans.booknumAdmin, "0");
+        if (badgenum == null) {
             badge_count_admin.setText("0");
-        }else{
-            badge_count_admin.setVisibility(View.VISIBLE);
-            badge_count_admin.setText(badgenum);
-
+            return;
         }
+        badge_count_admin.setVisibility(View.VISIBLE);
+        badge_count_admin.setText(badgenum);
+
         adminbell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -649,16 +647,6 @@ public class newHome extends AppCompatActivity {
 
     private void initSkeleton() {
         newhome.setVisibility(View.VISIBLE);
-        skeletonScreen = Skeleton.bind(rootViews)
-                .load(R.layout.skeletonlayout_2)
-                .duration(1000)
-                .color(R.color.colorFontGreyDark)
-                .angle(20)
-                .show();
-        new Handler().postDelayed(() -> {
-            skeletonScreen.hide();
-            rootViews.setVisibility(View.GONE);
-        }, 1000);
     }
 
     private boolean isFirstRun() {
@@ -831,6 +819,9 @@ public class newHome extends AppCompatActivity {
                 } else if (v.getId() == R.id.setEventAdmin) {
                     Intent intent = new Intent(getApplicationContext(), setEvent_admin.class);
                     startActivity(intent);
+                } else if (v.getId() == R.id. event_bell) {
+                    Intent intent = new Intent(getApplicationContext(), history_book_event.class);
+                    startActivity(intent);
                 }
             }
         };
@@ -852,7 +843,7 @@ public class newHome extends AppCompatActivity {
         findViewById(R.id.update).setOnClickListener(clickListener);
         findViewById(R.id.setSuperAdmin).setOnClickListener(clickListener);
         findViewById(R.id.setEventAdmin).setOnClickListener(clickListener);
-
+        findViewById(R.id.event_bell).setOnClickListener(clickListener);
     }
 
 
@@ -1010,33 +1001,21 @@ public class newHome extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                     }
                 });
-                skeletonScreen.hide();
-                rootViews.setVisibility(View.GONE);
             }, 1000);
         } else {
             loadDefault();
-            rootViews.setVisibility(View.GONE);
         }
     }
 
     private void initEventbook() {
         startService(new Intent(this, MessageNotificationService.class));
-        String badgenum = SPUtils.getInstance().getString(AppConstans.booknumAdmin,"0");
-        if(badgenum.isEmpty()){
+        String badgenum = SPUtils.getInstance().getString(AppConstans.booknumAdmin, "0");
+        if (badgenum != null) {
             event_badge.setText("0");
-        }else{
-            event_badge.setVisibility(View.VISIBLE);
-            event_badge.setText(badgenum);
-
+            return;
         }
-        event_bell.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), history_book_event.class);
-                intent.putExtra("bookprovideremail", bookprovideremail);
-                startActivity(intent);
-            }
-        });
+        event_badge.setVisibility(View.VISIBLE);
+        event_badge.setText(badgenum);
     }
 
     private void initShowGuide() {
@@ -1282,7 +1261,6 @@ public class newHome extends AppCompatActivity {
             adminbell.setVisibility(View.VISIBLE);
             badge_count_admin.setVisibility(View.VISIBLE);
             sidenav.setVisibility(View.VISIBLE);
-            rootViews.setVisibility(View.GONE);
             admin_menus.setVisibility(View.VISIBLE);
             admin_linear.setVisibility(View.VISIBLE);
             event_linear.setVisibility(View.GONE);
@@ -1308,7 +1286,6 @@ public class newHome extends AppCompatActivity {
             badge_count_admin.setVisibility(View.GONE);
             setSuperAdmin.setVisibility(View.GONE);
             selectortab_event.setVisibility(View.GONE);
-            rootViews.setVisibility(View.GONE);
             adminviewpager.setVisibility(View.GONE);
             admin_menus.setVisibility(View.VISIBLE);
             updateAdmin.setVisibility(View.GONE);
@@ -1337,7 +1314,6 @@ public class newHome extends AppCompatActivity {
             badge_count_admin.setVisibility(View.GONE);
             setSuperAdmin.setVisibility(View.GONE);
             sidenav.setVisibility(View.VISIBLE);
-            rootViews.setVisibility(View.GONE);
             newhome.setVisibility(View.VISIBLE);
             admin_linear.setVisibility(View.GONE);
             adminPager.setVisibility(View.GONE);

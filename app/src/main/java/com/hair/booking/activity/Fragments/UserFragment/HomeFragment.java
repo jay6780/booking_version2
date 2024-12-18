@@ -3,6 +3,7 @@ package com.hair.booking.activity.Fragments.UserFragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ethanhua.skeleton.Skeleton;
+import com.ethanhua.skeleton.SkeletonScreen;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -52,6 +55,8 @@ public class HomeFragment extends Fragment {
     private ArtistAdapter providerAdapter;
     private ArtistAdapter2 eventOrgAdapter;
     private TextView TopArt,ViewAll,TopOrganizer,ViewAll_artist;
+    private LinearLayout home_layout,root_view;
+    private SkeletonScreen skeletonScreen;
 
     @Nullable
     @Override
@@ -63,8 +68,23 @@ public class HomeFragment extends Fragment {
         initgender();
         initfirebase2();
         setupSearchView();
+        initSkeleton();
         return view;
     }
+
+    private void initSkeleton() {
+        home_layout.setVisibility(View.VISIBLE);
+        skeletonScreen = Skeleton.bind(root_view)
+                .load(R.layout.skeletonlayout_2)
+                .duration(1000)
+                .color(R.color.colorFontGreyDark)
+                .angle(20)
+                .show();
+        new Handler().postDelayed(() -> {
+            skeletonScreen.hide();
+            root_view.setVisibility(View.GONE);
+        }, 1000);
+}
 
     private void initgender() {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -279,6 +299,8 @@ public class HomeFragment extends Fragment {
 
 
     private void initView(View view) {
+        root_view = view.findViewById(R.id.root_view);
+        home_layout = view.findViewById(R.id.home_layout);
         banner = view.findViewById(R.id.banner);
         ViewAll_artist = view.findViewById(R.id.ViewAll_artist);
         ViewAll = view.findViewById(R.id.ViewAll);

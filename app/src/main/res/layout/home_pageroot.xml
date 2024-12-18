@@ -14,10 +14,6 @@
     <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <include
-        layout="@layout/skeleton_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 <LinearLayout
     android:id="@+id/admin_linear"
     android:layout_width="match_parent"

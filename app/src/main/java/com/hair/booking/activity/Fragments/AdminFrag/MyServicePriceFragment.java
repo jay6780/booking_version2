@@ -2,6 +2,7 @@ package com.hair.booking.activity.Fragments.AdminFrag;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ethanhua.skeleton.Skeleton;
+import com.ethanhua.skeleton.SkeletonScreen;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -61,7 +64,9 @@ public class MyServicePriceFragment extends Fragment {
     private DatabaseReference adminRef,countRef;
     private int bookcount,review;
     private ArrayList<Service>services;
+    private LinearLayout home_layout,root_view;
     private SearchView searchservicename;
+    private SkeletonScreen skeletonScreen;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -71,6 +76,8 @@ public class MyServicePriceFragment extends Fragment {
         add = view.findViewById(R.id.add);
         clear = view.findViewById(R.id.clear);
         searchservicename = view.findViewById(R.id.search);
+        root_view = view.findViewById(R.id.root_view);
+        home_layout = view.findViewById(R.id.home_layout);
         services = new ArrayList<>();
         myserviceRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -82,8 +89,24 @@ public class MyServicePriceFragment extends Fragment {
         clear.setOnClickListener(view1 -> clearDiscount());
         intiBanner();
         setupSearchView();
+        initSkeleton();
         return view;
     }
+
+    private void initSkeleton() {
+        home_layout.setVisibility(View.VISIBLE);
+        skeletonScreen = Skeleton.bind(root_view)
+                .load(R.layout.skeletonlayout_2)
+                .duration(1000)
+                .color(R.color.colorFontGreyDark)
+                .angle(20)
+                .show();
+        new Handler().postDelayed(() -> {
+            skeletonScreen.hide();
+            root_view.setVisibility(View.GONE);
+        }, 1000);
+    }
+
 
     private void clearDiscount() {
         Dialog clearDiscount = new Dialog();
