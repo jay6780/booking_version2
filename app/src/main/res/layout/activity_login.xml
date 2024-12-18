@@ -157,14 +157,14 @@
                 android:textStyle="bold"
                 app:fontFamily="@font/inter" />
 
-           <TextView
-               android:id="@+id/createaccount"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="5dp"
-               android:layout_gravity="center"
-               android:textSize="12sp"
-               android:text="Create new account?"/>
+            <TextView
+                android:id="@+id/createaccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:textSize="12sp"
+                android:text="Create new account?"/>
 
 
             <LinearLayout
@@ -203,23 +203,36 @@
 
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/facebook"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center"
-                android:src="@mipmap/google_logo"
-                app:civ_border_width="2dp"
-                app:civ_border_color="#FF000000"/>
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/ll2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:layout_gravity="center"
-                android:textSize="12sp"
-                android:text="Continue with google"/>
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/google"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/google_logo"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="12sp"
+                        android:text="Continue with google"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
 
 
         </LinearLayout>

@@ -66,7 +66,7 @@ public class login extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
     private DialogPlus dialogPlus,dialogPlus2;
-    private ImageView facebook;
+    private ImageView facebook,google;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +78,8 @@ public class login extends AppCompatActivity {
         }
 
         mAuth = FirebaseAuth.getInstance();
-        facebook = findViewById(R.id.facebook);
+//        facebook = findViewById(R.id.facebook);
+        google = findViewById(R.id.google);
         emailEditText = findViewById(R.id.login_email);
         passwordEditText = findViewById(R.id.plogin_password);
         createacc = findViewById(R.id.createaccount);
@@ -104,7 +105,7 @@ public class login extends AppCompatActivity {
             }
         });
 
-        facebook.setOnClickListener(new View.OnClickListener() {
+        google.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),google_login.class);
@@ -113,6 +114,16 @@ public class login extends AppCompatActivity {
                 finish();
             }
         });
+
+//        facebook.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getApplicationContext(),facebook_login.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
         forgotPasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
