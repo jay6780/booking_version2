@@ -71,6 +71,7 @@ import com.hair.booking.activity.MainPageActivity.chat.User_list;
 import com.hair.booking.activity.MainPageActivity.chat.chatActivity;
 import com.hair.booking.activity.tools.DialogUtils.Dialog;
 import com.hair.booking.activity.tools.Model.ChatRoom;
+import com.hair.booking.activity.tools.Model.Maplink;
 import com.hair.booking.activity.tools.Model.RouteFetcher;
 import com.hair.booking.activity.tools.Model.Usermodel;
 import com.hair.booking.activity.tools.Service.MessageNotificationService;
@@ -816,6 +817,7 @@ public class Bookingmap extends AppCompatActivity implements OnMapReadyCallback 
                             String[] latLngArray = latlang.split(",");
                             if (latLngArray.length == 2) {
                                 locationLink = "https://www.google.com/maps/?q=" + latLngArray[0] + "," + latLngArray[1];
+                                savedlocationLink(userId,locationLink);
                             }
                         }
 
@@ -859,6 +861,22 @@ public class Bookingmap extends AppCompatActivity implements OnMapReadyCallback 
             }
         });
     }
+
+    private void savedlocationLink(String userId, String locationLink) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        Maplink maplink = new Maplink(locationLink);
+        databaseReference.child("maplink").child(userId).setValue(maplink)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.d("Firebase", "Location link saved successfully for userId: " + userId);
+                    } else {
+                        // Handle errors
+                        Log.e("Firebase", "Error saving location link", task.getException());
+                    }
+                });
+    }
+
 
     private Bitmap getCircularBitmap(Bitmap bitmap) {
         Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);

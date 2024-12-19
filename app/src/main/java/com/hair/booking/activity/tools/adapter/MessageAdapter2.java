@@ -7,11 +7,14 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,9 +46,11 @@ import com.hair.booking.activity.MainPageActivity.FullScreenImageActivity;
 import com.lee.avengergone.DisappearView;
 import com.orhanobut.dialogplus.DialogPlus;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 public class MessageAdapter2 extends RecyclerView.Adapter<MessageAdapter2.MessageViewHolder> {
     private ArrayList<Message> messageList;
@@ -185,9 +190,11 @@ public class MessageAdapter2 extends RecyclerView.Adapter<MessageAdapter2.Messag
                     try {
                         double latitude = Double.parseDouble(latLngParts[0]);
                         double longitude = Double.parseDouble(latLngParts[1]);
+                        convertMapUrl(latitude,longitude);
                         String age = SPUtils.getInstance().getString(AppConstans.age);
                         Intent intent = new Intent(context, Bookingmap_Admin.class);
                         intent.putExtra("providerEmail", message.getSenderEmail());
+                        intent.putExtra("address", SPUtils.getInstance().getString(AppConstans.userAddress));
                         intent.putExtra("image", message.getUserImageUrl());
                         intent.putExtra("providerName", message.getUsername());
                         intent.putExtra("age", age);
@@ -209,6 +216,37 @@ public class MessageAdapter2 extends RecyclerView.Adapter<MessageAdapter2.Messag
             Toast.makeText(context, "This message does not contain a map link.", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void convertMapUrl(double latitude, double longitude) {
+        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+        StringBuilder locationText = new StringBuilder();
+        try {
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            if (addresses != null && !addresses.isEmpty()) {
+                Address address = addresses.get(0);
+                if (address.getLocality() != null) {
+                    locationText.append(address.getLocality());
+                }
+                if (address.getAdminArea() != null) {
+                    if (locationText.length() > 0) {
+                        locationText.append(", ");
+                    }
+                    locationText.append(address.getAdminArea());
+                }
+
+                if (address.getCountryName() != null) {
+                    if (locationText.length() > 0) {
+                        locationText.append(", ");
+                    }
+                    locationText.append(address.getCountryName());
+                }
+
+            }
+            SPUtils.getInstance().put(AppConstans.userAddress,String.valueOf(locationText));
+        } catch (IOException e) {
+        }
+    }
+
 
 
     private String convertTimestampToDate(long timestamp) {

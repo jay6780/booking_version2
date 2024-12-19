@@ -34,8 +34,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.hair.booking.R;
+import com.hair.booking.activity.MainPageActivity.Admin.Bookingmap_Admin;
 import com.hair.booking.activity.MainPageActivity.chat.chatActivity2;
 import com.hair.booking.activity.MainPageActivity.chat.chatActivity3;
+import com.hair.booking.activity.events.Bookingmap_Event;
 import com.hair.booking.activity.tools.Model.Booking;
 import com.hair.booking.activity.tools.Model.Booking2;
 import com.hair.booking.activity.tools.Model.BookingId;
@@ -103,6 +105,15 @@ public class BookingAdapter_event extends RecyclerView.Adapter<BookingAdapter_ev
                 .placeholder(R.drawable.baseline_person_24)
                 .into(holder.avatar);
 
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openMap(booking.getEmail(),booking.getProviderName(),
+                        booking.getImage(),booking.getKey());
+            }
+        });
+
         holder.cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,6 +167,102 @@ public class BookingAdapter_event extends RecyclerView.Adapter<BookingAdapter_ev
                         .show();
             }
         });
+    }
+
+    private void openMap(String email,String name,String image,String key) {
+        Log.d(TAG, "keyUser: " + key);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("maplink").child(key);
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    String mapUrl = dataSnapshot.child("mapurl").getValue(String.class);
+                    if (mapUrl != null) {
+                        Log.d(TAG, "Fetched map URL: " + mapUrl);
+                        startMap(mapUrl,email,name,image,key);
+
+                    } else {
+                        Log.e(TAG, "mapurl is null in the snapshot.");
+                    }
+                } else {
+                    Log.e(TAG, "No data found for the provided key.");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e(TAG, "Database error: " + databaseError.getMessage());
+            }
+        });
+    }
+
+    private void startMap(String mapurl,String email,String name,String image,String key) {
+        if (mapurl != null && mapurl.startsWith("https://www.google.com/maps/?q=")) {
+            String[] parts = mapurl.split("q=");
+            if (parts.length > 1) {
+                String latLng = parts[1];
+                String[] latLngParts = latLng.split(",");
+                if (latLngParts.length >= 2) {
+                    try {
+                        double latitude = Double.parseDouble(latLngParts[0]);
+                        double longitude = Double.parseDouble(latLngParts[1]);
+
+                        convertMapUrl(latitude,longitude);
+                        String age = SPUtils.getInstance().getString(AppConstans.age);
+                        Intent intent = new Intent(context, Bookingmap_Event.class);
+                        intent.putExtra("providerEmail", email);
+                        intent.putExtra("image", image);
+                        intent.putExtra("providerName", name);
+                        intent.putExtra("age", age);
+                        intent.putExtra("address", SPUtils.getInstance().getString(AppConstans.userAddress));
+                        intent.putExtra("latitude", latitude);
+                        intent.putExtra("longitude", longitude);
+                        intent.putExtra("key", key);
+                        context.startActivity(intent);
+
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(context, "Invalid coordinates", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(context, "Invalid map URL format", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(context, "Invalid map URL format", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(context, "This message does not contain a map link.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void convertMapUrl(double latitude, double longitude) {
+        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+        StringBuilder locationText = new StringBuilder();
+        try {
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            if (addresses != null && !addresses.isEmpty()) {
+                Address address = addresses.get(0);
+                if (address.getLocality() != null) {
+                    locationText.append(address.getLocality());
+                }
+                if (address.getAdminArea() != null) {
+                    if (locationText.length() > 0) {
+                        locationText.append(", ");
+                    }
+                    locationText.append(address.getAdminArea());
+                }
+
+                if (address.getCountryName() != null) {
+                    if (locationText.length() > 0) {
+                        locationText.append(", ");
+                    }
+                    locationText.append(address.getCountryName());
+                }
+
+            }
+            SPUtils.getInstance().put(AppConstans.userAddress,String.valueOf(locationText));
+        } catch (IOException e) {
+            Log.e(TAG, "Error getting location details: ", e);
+        }
     }
 
     private void initRecentpackages(String serviceName) {

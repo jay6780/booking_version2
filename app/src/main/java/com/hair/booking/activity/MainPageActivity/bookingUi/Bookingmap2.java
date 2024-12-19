@@ -66,6 +66,7 @@ import com.hair.booking.R;
 import com.hair.booking.activity.MainPageActivity.chat.User_list;
 import com.hair.booking.activity.MainPageActivity.chat.chatActivity;
 import com.hair.booking.activity.tools.Model.ChatRoom;
+import com.hair.booking.activity.tools.Model.Maplink;
 import com.hair.booking.activity.tools.Model.RouteFetcher;
 import com.hair.booking.activity.tools.Model.Usermodel;
 import com.hair.booking.activity.tools.Service.MessageNotificationService;
@@ -741,6 +742,7 @@ public class Bookingmap2 extends AppCompatActivity implements OnMapReadyCallback
                 if (dataSnapshot.exists()) {
                     String username = dataSnapshot.child("username").getValue(String.class);
                     String locationLink = SPUtils.getInstance().getString(AppConstans.locationlink);
+                    savedlocationLink(userId,locationLink);
                         availedmess = "Hi, I'm " + username + "\n" +
                                 "I availed:\n" +
                                 "Service Name: " + serviceName + "\n" +
@@ -764,6 +766,22 @@ public class Bookingmap2 extends AppCompatActivity implements OnMapReadyCallback
             }
         });
     }
+
+    private void savedlocationLink(String userId, String locationLink) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        Maplink maplink = new Maplink(locationLink);
+        databaseReference.child("maplink").child(userId).setValue(maplink)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.d("Firebase", "Location link saved successfully for userId: " + userId);
+                    } else {
+                        // Handle errors
+                        Log.e("Firebase", "Error saving location link", task.getException());
+                    }
+                });
+    }
+
 
     private Bitmap getCircularBitmap(Bitmap bitmap) {
         Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);

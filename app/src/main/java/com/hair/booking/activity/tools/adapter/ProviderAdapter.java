@@ -41,7 +41,7 @@ import java.util.concurrent.TimeUnit;
 public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.ProviderViewHolder> {
     private ArrayList<Usermodel> providerList;
     private Context context;
-    private DatabaseReference databaseReference,chatreference,event;
+    private DatabaseReference databaseReference,chatreference,event,typingstatus,map;
     private String TAG = "Adapter";
     private Set<Integer> selectedProviders = new HashSet<>();
     private boolean multiSelectMode = false;
@@ -52,6 +52,8 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.Provid
         this.databaseReference = FirebaseDatabase.getInstance().getReference("ADMIN");
         this.event = FirebaseDatabase.getInstance().getReference("Events");
         this.chatreference = FirebaseDatabase.getInstance().getReference("chatRooms");
+        this.typingstatus = FirebaseDatabase.getInstance().getReference("typingResult");
+        this.map = FirebaseDatabase.getInstance().getReference("transactionMap");
     }
     public void setOnSelectionChangeListener(OnSelectionChangeListener listener) {
         this.selectionChangeListener = listener;
@@ -246,6 +248,8 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.Provid
         for (Usermodel provider : selectedItems) {
             String chatRoomId = createChatRoomId(SPUtils.getInstance().getString(AppConstans.userEmail), provider.getEmail());
             chatreference.child(chatRoomId).removeValue();
+            typingstatus.child(chatRoomId).removeValue();
+            map.child(chatRoomId).removeValue();
             providerList.remove(provider);
             Toast.makeText(context, "Deleted chat with: " + provider.getUsername(), Toast.LENGTH_SHORT).show();
         }

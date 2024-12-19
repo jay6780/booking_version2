@@ -97,7 +97,7 @@ public class facebook_login extends AppCompatActivity {
                             if (object != null) {
                                 String email = object.optString("email");
                                 Log.d(TAG, "Facebook Email: " + email);
-                                SPUtils.getInstance().put(AppConstans.facebookEmail, email);
+                                SPUtils.getInstance().put(AppConstans.emailAuthenticaion, email);
 
                                 // Update Firebase email if Facebook email is available
                                 FirebaseUser user = mAuth.getCurrentUser();
@@ -115,8 +115,6 @@ public class facebook_login extends AppCompatActivity {
                                         }
                                     });
                                 }
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Facebook email is not available!", Toast.LENGTH_SHORT).show();
                             }
                         } catch (Exception e) {
                             Log.e(TAG, "Error getting email: " + e.getMessage());

@@ -7,6 +7,8 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.SpannableString;
@@ -39,9 +41,11 @@ import com.hair.booking.activity.tools.Utils.AppConstans;
 import com.hair.booking.activity.tools.Utils.SPUtils;
 import com.lee.avengergone.DisappearView;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 public class MessageAdapter3 extends RecyclerView.Adapter<MessageAdapter3.MessageViewHolder> {
     private ArrayList<Message> messageList;
@@ -181,9 +185,11 @@ public class MessageAdapter3 extends RecyclerView.Adapter<MessageAdapter3.Messag
                     try {
                         double latitude = Double.parseDouble(latLngParts[0]);
                         double longitude = Double.parseDouble(latLngParts[1]);
+                        convertMapUrl(latitude,longitude);
                         String age = SPUtils.getInstance().getString(AppConstans.age);
                         Intent intent = new Intent(context, Bookingmap_Event.class);
                         intent.putExtra("providerEmail", message.getSenderEmail());
+                        intent.putExtra("address", SPUtils.getInstance().getString(AppConstans.userAddress));
                         intent.putExtra("image", message.getUserImageUrl());
                         intent.putExtra("providerName", message.getUsername());
                         intent.putExtra("age", age);
@@ -206,6 +212,36 @@ public class MessageAdapter3 extends RecyclerView.Adapter<MessageAdapter3.Messag
             }
         } else {
             Toast.makeText(context, "This message does not contain a map link.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void convertMapUrl(double latitude, double longitude) {
+        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+        StringBuilder locationText = new StringBuilder();
+        try {
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            if (addresses != null && !addresses.isEmpty()) {
+                Address address = addresses.get(0);
+                if (address.getLocality() != null) {
+                    locationText.append(address.getLocality());
+                }
+                if (address.getAdminArea() != null) {
+                    if (locationText.length() > 0) {
+                        locationText.append(", ");
+                    }
+                    locationText.append(address.getAdminArea());
+                }
+
+                if (address.getCountryName() != null) {
+                    if (locationText.length() > 0) {
+                        locationText.append(", ");
+                    }
+                    locationText.append(address.getCountryName());
+                }
+
+            }
+            SPUtils.getInstance().put(AppConstans.userAddress,String.valueOf(locationText));
+        } catch (IOException e) {
         }
     }
 

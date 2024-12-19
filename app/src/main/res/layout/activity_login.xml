@@ -211,7 +211,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_gravity="center"
                 android:orientation="horizontal"
-                android:weightSum="1">
+                android:weightSum="2">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -231,6 +231,20 @@
                         android:text="Continue with google"/>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/facebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/facebook"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 

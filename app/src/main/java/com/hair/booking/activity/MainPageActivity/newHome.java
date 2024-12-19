@@ -1088,24 +1088,28 @@ public class newHome extends AppCompatActivity {
         email_event = findViewById(R.id.email2);
         email3 = findViewById(R.id.email);
         email3.setVisibility(View.GONE);
-        if (image != null && !image.isEmpty()) {
-            RequestOptions requestOptions = new RequestOptions().circleCrop();
-            Glide.with(this)
-                    .load(image)
-                    .apply(requestOptions)
-                    .into(avatar);
-        } else {
-            avatar.setImageResource(R.mipmap.man);
+        if (!newHome.this.isFinishing() && !newHome.this.isDestroyed()) {
+            if (image != null && !image.isEmpty()) {
+                RequestOptions requestOptions = new RequestOptions().circleCrop();
+                Glide.with(newHome.this)
+                        .load(image)
+                        .apply(requestOptions)
+                        .into(avatar);
+            } else {
+                avatar.setImageResource(R.mipmap.man);
+            }
         }
 
-        if (image != null && !image.isEmpty()) {
-            RequestOptions requestOptions = new RequestOptions().circleCrop();
-            Glide.with(this)
-                    .load(image)
-                    .apply(requestOptions)
-                    .into(avatar2);
-        } else {
-            avatar2.setImageResource(R.mipmap.man);
+        if (!newHome.this.isFinishing() && !newHome.this.isDestroyed()) {
+            if (image != null && !image.isEmpty()) {
+                RequestOptions requestOptions = new RequestOptions().circleCrop();
+                Glide.with(this)
+                        .load(image)
+                        .apply(requestOptions)
+                        .into(avatar2);
+            } else {
+                avatar2.setImageResource(R.mipmap.man);
+            }
         }
         username_event.setText(usernamedata);
         email_event.setText(email);
@@ -1227,6 +1231,7 @@ public class newHome extends AppCompatActivity {
     private void savedMyProfile(String guessImage, String userEmail, String usernameText, String phone, String fullname, String addressUser,String age) {
         SPUtils.getInstance().put(AppConstans.guessImage, guessImage);
         SPUtils.getInstance().put(AppConstans.userEmail, userEmail);
+        SPUtils.getInstance().put(AppConstans.emailAuthenticaion, userEmail);
         SPUtils.getInstance().put(AppConstans.usernameText, usernameText);
         SPUtils.getInstance().put(AppConstans.phone, phone);
         SPUtils.getInstance().put(AppConstans.fullname, fullname);

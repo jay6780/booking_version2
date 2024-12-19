@@ -105,10 +105,9 @@ public class Bookingmap_Event extends AppCompatActivity implements OnMapReadyCal
     private TextView ages, username,location,profiletxt;
     private ImageView profileimage, backBtn;
     private AppCompatButton messagebtn;
-    String name = SPUtils.getInstance().getString(AppConstans.providerName);
-    String address = SPUtils.getInstance().getString(AppConstans.address);
+    String name;
+    String address;
     String chatRoomId = SPUtils.getInstance().getString(AppConstans.ChatRoomId);
-    String providerName = SPUtils.getInstance().getString(AppConstans.providerName);
     private DatabaseReference databaseReference, chatroomIds;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,13 +136,15 @@ public class Bookingmap_Event extends AppCompatActivity implements OnMapReadyCal
         lengthOfService = getIntent().getStringExtra("lengthOfService");
         age = getIntent().getStringExtra("age");
         key = intent.getStringExtra("key");
+        name = getIntent().getStringExtra("providerName");
+        address = getIntent().getStringExtra("address");
         providerEmail = intent.getStringExtra("providerEmail");
         destinationLocation = new LatLng(latitude, longitude);
         location.setText(getString(R.string.address)+": "+address);
         username.setText(getString(R.string.name)+ ": "+(name != null ? name : "N/A"));
         Log.d(TAG, "email: " + providerEmail);
         Log.d(TAG, "chatroomId: " + chatRoomId);
-        Log.d(TAG, "providerName: " + providerName);
+        Log.d(TAG, "providerName: " + name);
         Log.d(TAG, "image: " + image);
         Glide.with(this)
                 .load(image)
@@ -152,7 +153,7 @@ public class Bookingmap_Event extends AppCompatActivity implements OnMapReadyCal
                 .error(R.drawable.baseline_person_24)
                 .into(profileimage);
         backBtn.setOnClickListener(view -> onBackPressed());
-        messagebtn.setOnClickListener(view -> checkAndCreateChatRoom(providerEmail, providerName, image));
+        messagebtn.setOnClickListener(view -> checkAndCreateChatRoom(providerEmail, name, image));
         databaseReference = FirebaseDatabase.getInstance().getReference();
         chatroomIds = FirebaseDatabase.getInstance().getReference();
 

@@ -29,7 +29,6 @@ import com.hair.booking.activity.tools.Model.BookingId;
 import com.hair.booking.activity.tools.Utils.AppConstans;
 import com.hair.booking.activity.tools.Utils.SPUtils;
 import com.hair.booking.activity.tools.adapter.BookemptyAdapter;
-import com.hair.booking.activity.tools.adapter.BookingAdapter_admin;
 import com.hair.booking.activity.tools.adapter.BookingAdapter_event;
 
 import java.util.ArrayList;
