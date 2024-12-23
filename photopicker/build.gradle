@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 31
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 22
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -26,6 +26,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:22.2.1'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.squareup.picasso:picasso:2.5.2'
 }

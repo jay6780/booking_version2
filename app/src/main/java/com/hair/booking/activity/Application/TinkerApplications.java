@@ -7,11 +7,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 import androidx.multidex.MultiDex;
@@ -25,14 +20,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.hair.booking.R;
-import com.hair.booking.activity.MainPageActivity.newHome;
 import com.hair.booking.activity.MainPageActivity.login;
+import com.hair.booking.activity.MainPageActivity.newHome;
 import com.yariksoffice.lingver.Lingver;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
-import java.util.concurrent.Executor;
 
 public class TinkerApplications extends MultiDexApplication implements Application.ActivityLifecycleCallbacks {
     private DatabaseReference guessRef, adminRef,eventsRef;
