@@ -127,6 +127,7 @@ public class newHome extends AppCompatActivity {
     private LinearLayout setSuperAdmin,setEventAdmin;
     private ImageView adminbell,event_bell;
     private TextView badge_count_admin,event_badge;
+    private boolean isGuess = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -863,7 +864,8 @@ public class newHome extends AppCompatActivity {
                             initAdminSaveData(user.getUsername(),user.getEmail(),user.getImage(),user.getPhone(),
                                     user.getName(),user.getAddress(),user.getAge(),user.getLengthOfService());
                             startService(new Intent(newHome.this, MessageNotificationService.class));
-                            requestPermissions();
+                            requestPermissions2();
+                            showNotiff();
                             boolean isSuperAdmin = dataSnapshot.hasChild("isSuperAdmin") && Boolean.TRUE.equals(dataSnapshot.child("isSuperAdmin").getValue(Boolean.class));
                             if (isSuperAdmin) {
                                 setSuperAdmin.setVisibility(View.VISIBLE);
@@ -890,7 +892,7 @@ public class newHome extends AppCompatActivity {
                                     if (hasAddress && hasAge) {
                                         String name = user.getName();
                                         storeUserInDatabase(name);
-                                        updateUserUI(user, true,false);
+                                        updateUserUI(user, true,false,false);
 
                                         initAdminBook();
                                         initUserInfo_admin(user.getImage(),user.getUsername(),user.getAddress(),user.getEmail());
@@ -933,9 +935,8 @@ public class newHome extends AppCompatActivity {
                                             initShowbook();
                                             savedMyProfile(guessImage, userEmail, usernameText, phone, fullname, addressUser,age);
                                             storeUserInDatabase(name);
-                                            updateUserUI(user, false,false);
+                                            updateUserUI(user, false,false,true);
                                             SavedUserType("Guess");
-                                            initShowGuide();
                                             initUserInfo(user.getImage(),user.getUsername(),user.getEmail());
                                             if (!hasEmail) {
 
@@ -958,7 +959,8 @@ public class newHome extends AppCompatActivity {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                 if (dataSnapshot.exists()) {
-                                                    requestPermissions();
+                                                    requestPermissions2();
+                                                    showNotiff();
                                                     Usermodel user = dataSnapshot.getValue(Usermodel.class);
                                                     boolean isSuperAdmin = dataSnapshot.hasChild("isSuperAdmin") && Boolean.TRUE.equals(dataSnapshot.child("isSuperAdmin").getValue(Boolean.class));
                                                     if (isSuperAdmin) {
@@ -971,7 +973,7 @@ public class newHome extends AppCompatActivity {
                                                         addEventoraganizer.setVisibility(View.GONE);
                                                         setEventAdmin.setVisibility(View.GONE);
                                                     }
-                                                    updateUserUI(user, false,true);
+                                                    updateUserUI(user, false,true,false);
                                                     SavedUserType("Events");
                                                     initEventbook();
                                                     initEventSaveData(user.getUsername(),user.getEmail(),user.getImage(),user.getPhone(),
@@ -1004,6 +1006,11 @@ public class newHome extends AppCompatActivity {
         }
     }
 
+    private void showNotiff() {
+        Dialog notification = new Dialog();
+        notification.notiffDialog(newHome.this);
+    }
+
     private void initEventbook() {
         startService(new Intent(this, MessageNotificationService.class));
         String badgenum = SPUtils.getInstance().getString(AppConstans.booknumEvent);
@@ -1017,24 +1024,24 @@ public class newHome extends AppCompatActivity {
     }
 
     private void initShowGuide() {
-        NewbieGuide.with(this)
-                .setLabel("Guide")
-                .setOnGuideChangedListener(new OnGuideChangedListener() {
-                    @Override
-                    public void onShowed(Controller controller) {
+            NewbieGuide.with(this)
+                    .setLabel("Guide")
+                    .setOnGuideChangedListener(new OnGuideChangedListener() {
+                        @Override
+                        public void onShowed(Controller controller) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onRemoved(Controller controller) {
-                        showMore();
-                    }
-                })
-                .addGuidePage(GuidePage.newInstance()
-                        .addHighLight(bell, HighLight.Shape.ROUND_RECTANGLE, 1)
-                        .setLayoutRes(R.layout.bell_guide)
-                )
-                .show();
+                        @Override
+                        public void onRemoved(Controller controller) {
+                            showMore();
+                        }
+                    })
+                    .addGuidePage(GuidePage.newInstance()
+                            .addHighLight(bell, HighLight.Shape.ROUND_RECTANGLE, 1)
+                            .setLayoutRes(R.layout.bell_guide)
+                    )
+                    .show();
     }
 
 
@@ -1255,10 +1262,11 @@ public class newHome extends AppCompatActivity {
         SPUtils.getInstance().put(AppConstans.USERTYPE, userType);
 
     }
-    private void updateUserUI(Usermodel user, boolean isAdmin,boolean isEvent) {
+    private void updateUserUI(Usermodel user, boolean isAdmin,boolean isEvent,boolean Client) {
         usernameTextAdin.setVisibility(View.VISIBLE);
         userEmailAdmin.setVisibility(View.VISIBLE);
         if (isAdmin) {
+            isGuess = false;
             default_menu.setVisibility(View.GONE);
             event_bell.setVisibility(View.GONE);
             event_badge.setVisibility(View.GONE);
@@ -1284,6 +1292,7 @@ public class newHome extends AppCompatActivity {
             home.setVisibility(View.GONE);
             privacy.setVisibility(View.GONE);
         }else if (isEvent){
+            isGuess = false;
             default_menu.setVisibility(View.GONE);
             event_bell.setVisibility(View.VISIBLE);
             event_badge.setVisibility(View.VISIBLE);
@@ -1312,7 +1321,9 @@ public class newHome extends AppCompatActivity {
             event_bottomnav.setVisibility(View.VISIBLE);
             initProfile(user);
             initUserInfo_event(user.getImage(),user.getUsername(),user.getAddress(),user.getEmail());
-        }else{
+        }else if (Client){
+            isGuess = true;
+            initShowGuide();
             default_menu.setVisibility(View.GONE);
             event_bell.setVisibility(View.GONE);
             event_badge.setVisibility(View.GONE);
@@ -1397,6 +1408,20 @@ public class newHome extends AppCompatActivity {
                 ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
     }
+    private void requestPermissions2() {
+        ActivityCompat.requestPermissions(
+                this,
+                new String[]{
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_NETWORK_STATE,
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE
+                },
+                100
+        );
+    }
 
     private void requestPermissions() {
         ActivityCompat.requestPermissions(
@@ -1435,17 +1460,20 @@ public class newHome extends AppCompatActivity {
     }
 
     private void showNewbieGuide() {
-        NewbieGuide.with(this)
-                .setLabel("guideNew")
-                .addGuidePage(GuidePage.newInstance()
-                        .addHighLight(bottomNavigationView, HighLight.Shape.ROUND_RECTANGLE, 1)
-                        .setLayoutRes(R.layout.bottom_guide)
-                )
-                .addGuidePage(GuidePage.newInstance()
-                        .addHighLight(messageImg, HighLight.Shape.RECTANGLE, 1)
-                        .setLayoutRes(R.layout.chat_guide)
-                )
-                .show();
+        if(isGuess){
+            NewbieGuide.with(this)
+                    .setLabel("guideNew")
+                    .addGuidePage(GuidePage.newInstance()
+                            .addHighLight(bottomNavigationView, HighLight.Shape.ROUND_RECTANGLE, 1)
+                            .setLayoutRes(R.layout.bottom_guide)
+                    )
+                    .addGuidePage(GuidePage.newInstance()
+                            .addHighLight(messageImg, HighLight.Shape.RECTANGLE, 1)
+                            .setLayoutRes(R.layout.chat_guide)
+                    )
+                    .show();
+        }
+
     }
 
 

@@ -10,7 +10,7 @@ android {
         minSdk 21
         targetSdk 28
         versionCode 100
-        versionName "1.1.34"
+        versionName "1.1.35"
 
         dexOptions {
             jumboMode = true

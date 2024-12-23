@@ -745,6 +745,11 @@ public class Dialog {
 
 
     public void notiffDialog(Activity activity) {
+        boolean isNotificationEnabled = SPUtils.getInstance().getBoolean(AppConstans.Notification);
+        if (isNotificationEnabled) {
+            return;
+        }
+
         DialogPlus dialog = DialogPlus.newDialog(activity)
                 .setContentHolder(new ViewHolder(R.layout.notification))
                 .setContentWidth(ViewGroup.LayoutParams.MATCH_PARENT)
@@ -755,26 +760,29 @@ public class Dialog {
         View dialogView = dialog.getHolderView();
         Button logout = dialogView.findViewById(R.id.Yes);
         Button cancel = dialogView.findViewById(R.id.no);
-        TextView title  = dialogView.findViewById(R.id.title);
+        TextView title = dialogView.findViewById(R.id.title);
         title.setText("Notification Enabled?");
+
         logout.setOnClickListener(v -> {
             openNotificationSettings(activity);
+            SPUtils.getInstance().put(AppConstans.Notification,true);
             dialog.dismiss();
         });
+
         cancel.setOnClickListener(v -> {
+            SPUtils.getInstance().put(AppConstans.Notification,false);
             dialog.dismiss();
         });
+
         dialog.show();
     }
 
     private void openNotificationSettings(Activity activity) {
-            Intent intent = new Intent();
-            intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
-            intent.putExtra(Settings.EXTRA_APP_PACKAGE, activity.getPackageName());
-            activity.startActivity(intent);
+        Intent intent = new Intent();
+        intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+        intent.putExtra(Settings.EXTRA_APP_PACKAGE, activity.getPackageName());
+        activity.startActivity(intent);
     }
-
-
     public void shownoface(Activity activity) {
         DialogPlus dialog = DialogPlus.newDialog(activity)
                 .setContentHolder(new ViewHolder(R.layout.noface_layout))

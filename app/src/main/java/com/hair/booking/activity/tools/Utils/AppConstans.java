@@ -90,4 +90,5 @@ public class AppConstans {
     public static final String emailAuthenticaion = "emainAuthenticaion";
     public static final String booknumEvent = "booknumEvent";
     public static final String userAddress = "userAddress";
+    public static final String Notification = "Notification";
 }
