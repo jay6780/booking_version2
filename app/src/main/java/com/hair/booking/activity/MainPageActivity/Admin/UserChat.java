@@ -222,8 +222,7 @@ public class UserChat extends AppCompatActivity {
                 if (providerFound) {
                     providerAdapter.notifyDataSetChanged();
                 } else {
-                    Log.d("User_list", "No provider data found for email: " + targetEmail);
-                    Toast.makeText(UserChat.this, "No provider data found for this email.", Toast.LENGTH_SHORT).show();
+                    Log.d("User_list", "No provider data found for email: " + targetEmail);;
                 }
             }
 
