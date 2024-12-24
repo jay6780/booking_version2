@@ -1,7 +1,7 @@
 package com.hair.booking.activity.tools.Utils;
 
 public class AppConstans {
-    public static final String Apikey ="cm1yeptoj0008l5035mplahox";
+    public static final String Apikey ="cm52ad4gq0001mn03u6zx4vhm";
     public static final String ChatRoomId = "ChatRoomId";
     public static final String USERTYPE = "USERTYPE";
     public static final String ADDRESS = "address" ;

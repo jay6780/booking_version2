@@ -424,7 +424,7 @@ public class FacedectionFragment extends Fragment implements View.OnClickListene
                                 }
 
                                 if (swap_url != null && target_url != null) {
-                                    passedtheurl(swap_url, target_url);
+                                    passedtheurl(swap_url, target_url,"0");
                                 }
                             }
                         }
@@ -450,21 +450,29 @@ public class FacedectionFragment extends Fragment implements View.OnClickListene
         }
     }
 
-    private void passedtheurl(String swap_url, String target_url) {
+    private void passedtheurl(String swap_url, String target_url, String target_face_index) {
+        // Validate URLs to ensure they point to valid images with faces
+        if (swap_url == null || target_url == null || swap_url.isEmpty() || target_url.isEmpty()) {
+            Log.e("OkHttp", "Invalid URLs provided for face swap.");
+            return;
+        }
+
         OkHttpClient client = new OkHttpClient();
         String bodyContent = String.format(
-                "target_url=%s&swap_url=%s",
+                "target_url=%s&swap_url=%s&target_face_index=%s",
                 target_url,
-                swap_url
+                swap_url,
+                target_face_index
         );
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
         RequestBody body = RequestBody.create(mediaType, bodyContent);
         Request request = new Request.Builder()
                 .url("https://api.magicapi.dev/api/v1/capix/faceswap/faceswap/v1/image")
                 .post(body)
-                .addHeader("x-magicapi-key", getString(R.string.faceswapapikey))
+                .addHeader("x-magicapi-key", "cm52ad4gq0001mn03u6zx4vhm")
                 .addHeader("content-type", "application/x-www-form-urlencoded")
                 .build();
+
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -479,11 +487,13 @@ public class FacedectionFragment extends Fragment implements View.OnClickListene
                     Log.i("OkHttp", "Response: " + responseData);
                     Gson gson = new Gson();
                     ImageProcessResponse imageProcessResponse = gson.fromJson(responseData, ImageProcessResponse.class);
-                    requestId = imageProcessResponse.getImageProcessResponse().getRequestId();
+                    String requestId = imageProcessResponse.getImageProcessResponse().getRequestId();
                     passedRequestId(requestId);
                     Log.i("OkHttp", "Request ID: " + requestId);
                 } else {
                     Log.e("OkHttp", "Request failed with status code: " + response.code());
+                    String errorResponse = response.body().string();
+                    Log.e("OkHttp", "Error response: " + errorResponse);
                 }
             }
         });
@@ -514,7 +524,7 @@ public class FacedectionFragment extends Fragment implements View.OnClickListene
                 Request request = new Request.Builder()
                         .url("https://api.magicapi.dev/api/v1/capix/faceswap/result/")
                         .post(body)
-                        .addHeader("x-magicapi-key", getString(R.string.faceswapapikey))
+                        .addHeader("x-magicapi-key", "cm52ad4gq0001mn03u6zx4vhm")
                         .addHeader("content-type", "application/x-www-form-urlencoded")
                         .build();
 
