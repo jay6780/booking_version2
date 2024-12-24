@@ -37,7 +37,6 @@ import com.hair.booking.R;
 import com.hair.booking.activity.MainPageActivity.bookingUi.Bookingmap;
 import com.hair.booking.activity.MainPageActivity.bookingUi.Bookingmap2;
 import com.hair.booking.activity.MainPageActivity.chat.chatActivity;
-import com.hair.booking.activity.tools.Model.Booking;
 import com.hair.booking.activity.tools.Model.Booking2;
 import com.hair.booking.activity.tools.Model.BookingId;
 import com.hair.booking.activity.tools.Model.ChatRoom;
@@ -297,8 +296,9 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
                         SPUtils.getInstance().put(AppConstans.availedMessage, availedMessage);
                         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                         checkAndCreateChatRoom(provideremail, providerName, image, curruntUserEmail, context, address, key, availedMessage);
-                        Booking2 booking = new Booking2(providerName, serviceName, price, heads, phonenumber, date, time, image, address, provideremail, age, lengthOfservice, cash, key,snapshotkey);
-                        Booking2 booking2 = new Booking2(guessUsername, serviceName, price, heads, guessPhone, date, time, guessImage, guessAddress, guessEmail, guessAge, lengthOfservice, cash, uid,snapshotkey);
+                        String timestamp = String.valueOf(System.currentTimeMillis());
+                        Booking2 booking = new Booking2(providerName, serviceName, price, heads, phonenumber, date, time, image, address, provideremail, age, lengthOfservice, cash, key,snapshotkey,timestamp);
+                        Booking2 booking2 = new Booking2(guessUsername, serviceName, price, heads, guessPhone, date, time, guessImage, guessAddress, guessEmail, guessAge, lengthOfservice, cash, uid,snapshotkey,timestamp);
                         String chatRoomId = createChatRoomId(curruntUserEmail, provideremail);
                         String snapshotKey2 = SPUtils.getInstance().getString(AppConstans.snapshotkey);
                         CancelbookArtist.child(chatRoomId).child("bookInfo").child(snapshotkey).setValue(booking2)
@@ -371,7 +371,8 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (!snapshot.exists()) {
                     ChatRoom chatRoom = new ChatRoom();
-                    chatRoom.setUsers(Arrays.asList(curruntUserEmail, provideremail));
+                    String timestamp = String.valueOf(System.currentTimeMillis());
+                    chatRoom.setUsers(Arrays.asList("timestamp: "+timestamp,curruntUserEmail, provideremail));
                     chatroomIds.child("chatRooms").child(chatRoomId).setValue(chatRoom)
                             .addOnSuccessListener(aVoid -> {
                                 Toast.makeText(context, "Cancel Success", Toast.LENGTH_SHORT).show();

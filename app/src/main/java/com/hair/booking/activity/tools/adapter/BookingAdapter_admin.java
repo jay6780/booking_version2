@@ -294,10 +294,10 @@ public class BookingAdapter_admin extends RecyclerView.Adapter<BookingAdapter_ad
                     Log.d(TAG, availedMessage);
                     SPUtils.getInstance().put(AppConstans.availedMessage, availedMessage);
                     checkAndCreateChatRoom(provideremail, providerName, image, curruntUserEmail, context, address, key, availedMessage);
-
-                    Booking booking = new Booking(providerName, serviceName, price, heads, phonenumber, date, time, image, address, provideremail, age, lengthOfservice, cash, key);
+                    String timestamp = String.valueOf(System.currentTimeMillis());
+                    Booking booking = new Booking(providerName, serviceName, price, heads, phonenumber, date, time, image, address, provideremail, age, lengthOfservice, cash, key,timestamp);
                     String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    Booking booking2 = new Booking(adminUsername, serviceName, price, heads, adminPhone, date, time, adminImage, adminAddress, adminEmail, adminAge, lengthOfservice, cash, uid);
+                    Booking booking2 = new Booking(adminUsername, serviceName, price, heads, adminPhone, date, time, adminImage, adminAddress, adminEmail, adminAge, lengthOfservice, cash, uid,timestamp);
                     String chatRoomId = createChatRoomId(curruntUserEmail, provideremail);
                     CompletebookArtist.child(chatRoomId).child("bookInfo").child(snapshotkey).setValue(booking2)
                             .addOnCompleteListener(task1 -> {

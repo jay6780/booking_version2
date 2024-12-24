@@ -24,7 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.hair.booking.R;
-import com.hair.booking.activity.tools.Model.Booking;
 import com.hair.booking.activity.tools.Model.Booking2;
 import com.hair.booking.activity.tools.Model.BookingId;
 import com.hair.booking.activity.tools.Utils.AppConstans;
@@ -140,7 +139,7 @@ public class HistoryBookFragment extends Fragment {
                             for (DataSnapshot bookInfoSnapshot : dataSnapshot.getChildren()) {
                                 String snapshotkey = bookInfoSnapshot.child("snapshotkey").getValue(String.class);
                                 Log.d("MybookUser Snapshot", "snapshotkey: " + snapshotkey);
-                                SPUtils.getInstance().put(AppConstans.snapshotkey,snapshotkey);
+                                SPUtils.getInstance().put(AppConstans.snapshotkey, snapshotkey);
                             }
                         }
                     }
@@ -153,10 +152,10 @@ public class HistoryBookFragment extends Fragment {
             }
         }
     }
+
     private void handleBookInfoSnapshot(DataSnapshot dataSnapshot, List<String> chatIds, String chatId) {
         if (dataSnapshot.exists()) {
             for (DataSnapshot bookInfoSnapshot : dataSnapshot.getChildren()) {
-                // Get values from the snapshot
                 String address = bookInfoSnapshot.child("address").getValue(String.class);
                 String age = bookInfoSnapshot.child("age").getValue(String.class);
                 String date = bookInfoSnapshot.child("date").getValue(String.class);
@@ -173,8 +172,8 @@ public class HistoryBookFragment extends Fragment {
                 String paymentMethod = bookInfoSnapshot.child("paymentMethod").getValue(String.class);
                 String key = bookInfoSnapshot.child("key").getValue(String.class);
                 String snapshotkey = bookInfoSnapshot.child("snapshotkey").getValue(String.class);
+                String timestamp = bookInfoSnapshot.child("timestamp").getValue(String.class);
 
-                // Create and add the booking object
                 Booking2 booking = new Booking2(
                         providerName,
                         serviceName,
@@ -190,7 +189,8 @@ public class HistoryBookFragment extends Fragment {
                         lengthOfService,
                         paymentMethod,
                         key,
-                        snapshotkey
+                        snapshotkey,
+                        timestamp
                 );
                 bookingList.add(booking);
                 booknumber++;
@@ -198,6 +198,7 @@ public class HistoryBookFragment extends Fragment {
                 SPUtils.getInstance().put(AppConstans.booknum, booknum);
                 Log.d(TAG, "bookNum: " + booknum);
             }
+            Collections.sort(bookingList, (b1, b2) -> b2.getTimestamp().compareTo(b1.getTimestamp()));
         } else {
             Log.d("HistoryBook", "No booking found for chat ID: " + chatId);
         }

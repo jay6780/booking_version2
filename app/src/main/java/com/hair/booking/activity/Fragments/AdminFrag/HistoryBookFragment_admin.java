@@ -24,7 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.hair.booking.R;
-import com.hair.booking.activity.tools.Model.Booking;
 import com.hair.booking.activity.tools.Model.Booking2;
 import com.hair.booking.activity.tools.Model.BookingId;
 import com.hair.booking.activity.tools.Utils.AppConstans;
@@ -33,6 +32,7 @@ import com.hair.booking.activity.tools.adapter.BookemptyAdapter;
 import com.hair.booking.activity.tools.adapter.BookingAdapter_admin;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -169,7 +169,7 @@ public class HistoryBookFragment_admin extends Fragment {
                 String paymentMethod = bookInfoSnapshot.child("paymentMethod").getValue(String.class);
                 String key = bookInfoSnapshot.child("key").getValue(String.class);
                 String snapshotkey = bookInfoSnapshot.child("snapshotkey").getValue(String.class);
-
+                String timestamp = bookInfoSnapshot.child("timestamp").getValue(String.class);
                 // Create and add the booking object
                 Booking2 booking = new Booking2(
                         providerName,
@@ -186,13 +186,16 @@ public class HistoryBookFragment_admin extends Fragment {
                         lengthOfService,
                         paymentMethod,
                         key,
-                        snapshotkey
+                        snapshotkey,
+                        timestamp
                 );
                 bookingList.add(booking);
                 booknumber++;
-                SPUtils.getInstance().put(AppConstans.booknumAdmin, String.valueOf(booknumber));
-                Log.d(TAG, "bookNum: " + booknumber);
+                String booknum = String.valueOf(booknumber);
+                SPUtils.getInstance().put(AppConstans.booknum, booknum);
+                Log.d(TAG, "bookNum: " + booknum);
             }
+            Collections.sort(bookingList, (b1, b2) -> b2.getTimestamp().compareTo(b1.getTimestamp()));
         } else {
             Log.d("HistoryBook", "No booking found for chat ID: " + chatId);
         }

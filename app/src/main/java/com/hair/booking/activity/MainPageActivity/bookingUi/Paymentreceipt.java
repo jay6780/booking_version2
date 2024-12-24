@@ -25,17 +25,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.hair.booking.R;
-import com.hair.booking.activity.MainPageActivity.Admin.Ageandservice;
-import com.hair.booking.activity.MainPageActivity.Provider.hmua;
 import com.hair.booking.activity.MainPageActivity.chat.User_list;
-import com.hair.booking.activity.MainPageActivity.newHome;
 import com.hair.booking.activity.tools.DialogUtils.Dialog;
-import com.hair.booking.activity.tools.Model.BookCount;
-import com.hair.booking.activity.tools.Model.Booking;
 import com.hair.booking.activity.tools.Model.Booking2;
 import com.hair.booking.activity.tools.Model.BookingId;
 import com.hair.booking.activity.tools.Model.MychatId;
-import com.hair.booking.activity.tools.Model.Review;
 import com.hair.booking.activity.tools.Model.Schedule;
 import com.hair.booking.activity.tools.Service.MessageNotificationService;
 import com.hair.booking.activity.tools.Utils.AppConstans;
@@ -45,7 +39,6 @@ import com.orhanobut.dialogplus.DialogPlus;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
 
 public class Paymentreceipt extends AppCompatActivity {
@@ -214,9 +207,9 @@ public class Paymentreceipt extends AppCompatActivity {
 
 
             String snapshotkey = databaseReference.push().getKey();
-
-            Booking2 booking = new Booking2(providerName, serviceName, price, heads, phonenumber, date, time, image, addressadmin, email, age, lengthOfservice, selectedPayment, key,snapshotkey);
-            Booking2 booking2 = new Booking2(userName, serviceName, price, heads, userPhone, date, time, userImageUrl, userAddress, useremail, userAge, "", selectedPayment, userId,snapshotkey);
+            String timestamp = String.valueOf(System.currentTimeMillis());
+            Booking2 booking = new Booking2(providerName, serviceName, price, heads, phonenumber, date, time, image, addressadmin, email, age, lengthOfservice, selectedPayment, key,snapshotkey,timestamp);
+            Booking2 booking2 = new Booking2(userName, serviceName, price, heads, userPhone, date, time, userImageUrl, userAddress, useremail, userAge, "", selectedPayment, userId,snapshotkey,timestamp);
 
             // Add data to MybookUser
             DatabaseReference bookInfoRef2 = databaseReference2.child(childKey).child("bookInfo").child(snapshotkey);

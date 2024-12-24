@@ -32,6 +32,7 @@ import com.hair.booking.activity.tools.adapter.BookemptyAdapter;
 import com.hair.booking.activity.tools.adapter.Completebook_adapter_event;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -137,7 +138,7 @@ public class CompleteFragment_event extends Fragment {
                                 String paymentMethod = bookInfoSnapshot.child("paymentMethod").getValue(String.class);
                                 String key = bookInfoSnapshot.child("key").getValue(String.class);
                                 String snapshotkey = bookInfoSnapshot.child("snapshotkey").getValue(String.class);
-
+                                String timestamp = bookInfoSnapshot.child("timestamp").getValue(String.class);
 
                                 // Create and add the booking object
                                 Booking2 booking = new Booking2(
@@ -155,7 +156,8 @@ public class CompleteFragment_event extends Fragment {
                                         lengthOfService,
                                         paymentMethod,
                                         key,
-                                        snapshotkey
+                                        snapshotkey,
+                                        timestamp
                                 );
                                 bookingList.add(booking);
                                 booknumber++;
@@ -163,9 +165,11 @@ public class CompleteFragment_event extends Fragment {
                                 SPUtils.getInstance().put(AppConstans.booknumEvent, booknum);
                                 Log.d(TAG, "bookNum: " + booknumber);
                             }
+                            Collections.sort(bookingList, (b1, b2) -> b2.getTimestamp().compareTo(b1.getTimestamp()));
                         } else {
                             Log.d("HistoryBook", "No booking found for chat ID: " + chatId);
                         }
+
 
                         // Notify adapter after all data has been retrieved
                         if (chatIds.indexOf(chatId) == chatIds.size() - 1) {

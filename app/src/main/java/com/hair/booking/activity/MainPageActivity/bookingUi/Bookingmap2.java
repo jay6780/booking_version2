@@ -202,7 +202,8 @@ public class Bookingmap2 extends AppCompatActivity implements OnMapReadyCallback
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (!snapshot.exists()) {
                     ChatRoom chatRoom = new ChatRoom();
-                    chatRoom.setUsers(Arrays.asList(currentUserEmail, providerEmail));
+                    String timestamp = String.valueOf(System.currentTimeMillis());
+                    chatRoom.setUsers(Arrays.asList("timestamp: "+timestamp,currentUserEmail, providerEmail));
                     chatroomIds.child("chatRooms").child(chatRoomId).setValue(chatRoom)
                             .addOnSuccessListener(aVoid -> {
                                 Intent intent = new Intent(getApplicationContext(), chatActivity.class);

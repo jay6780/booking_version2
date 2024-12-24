@@ -34,11 +34,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.hair.booking.R;
-import com.hair.booking.activity.MainPageActivity.Admin.Bookingmap_Admin;
-import com.hair.booking.activity.MainPageActivity.chat.chatActivity2;
 import com.hair.booking.activity.MainPageActivity.chat.chatActivity3;
 import com.hair.booking.activity.events.Bookingmap_Event;
-import com.hair.booking.activity.tools.Model.Booking;
 import com.hair.booking.activity.tools.Model.Booking2;
 import com.hair.booking.activity.tools.Model.BookingId;
 import com.hair.booking.activity.tools.Model.ChatRoom;
@@ -346,9 +343,10 @@ public class BookingAdapter_event extends RecyclerView.Adapter<BookingAdapter_ev
                     Log.d(TAG, availedMessage);
                     SPUtils.getInstance().put(AppConstans.availedMessage, availedMessage);
                     checkAndCreateChatRoom(provideremail, providerName, image, curruntUserEmail, context, address, key, availedMessage);
-                    Booking2 booking = new Booking2(providerName, serviceName, price, heads, phonenumber, date, time, image, address, provideremail, age, lengthOfservice, cash, key,snapshotkey);
+                    String timestamp = String.valueOf(System.currentTimeMillis());
+                    Booking2 booking = new Booking2(providerName, serviceName, price, heads, phonenumber, date, time, image, address, provideremail, age, lengthOfservice, cash, key,snapshotkey,timestamp);
                     String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    Booking2 booking2 = new Booking2(eventUsername, serviceName, price, heads, eventPhone, date, time, eventImage, eventAddress, eventEmail, eventAge, lengthOfservice, cash, uid,snapshotkey);
+                    Booking2 booking2 = new Booking2(eventUsername, serviceName, price, heads, eventPhone, date, time, eventImage, eventAddress, eventEmail, eventAge, lengthOfservice, cash, uid,snapshotkey,timestamp);
                     String chatRoomId = createChatRoomId(curruntUserEmail, provideremail);
                     CompletebookArtist.child(chatRoomId).child("bookInfo").child(snapshotkey).setValue(booking2)
                             .addOnCompleteListener(task1 -> {

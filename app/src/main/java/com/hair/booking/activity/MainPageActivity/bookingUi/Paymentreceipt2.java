@@ -30,10 +30,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.hair.booking.R;
-import com.hair.booking.activity.MainPageActivity.Provider.Event_provider;
 import com.hair.booking.activity.MainPageActivity.chat.User_list;
 import com.hair.booking.activity.tools.DialogUtils.Dialog;
-import com.hair.booking.activity.tools.Model.Booking;
 import com.hair.booking.activity.tools.Model.Booking2;
 import com.hair.booking.activity.tools.Model.BookingId;
 import com.hair.booking.activity.tools.Model.MychatId;
@@ -50,11 +48,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 
 public class Paymentreceipt2 extends AppCompatActivity {
     private ImageView avatar,back,bell,msgbtn;
@@ -254,9 +250,9 @@ public class Paymentreceipt2 extends AppCompatActivity {
 
             String snapshotkey = databaseReference.push().getKey();
             String snapshotkey2 = databaseReference2.push().getKey();
-
-            Booking2 booking = new Booking2(providerName, serviceName, price, heads, phonenumber, date, time, image, addressadmin, email, age, lengthOfservice, selectedPayment, key,snapshotkey);
-            Booking2 booking2 = new Booking2(userName, serviceName, price, heads, userPhone, date, time, userImageUrl, userAddress, useremail, userAge, "", selectedPayment, userId,snapshotkey);
+            String timeStamp = String.valueOf(System.currentTimeMillis());
+            Booking2 booking = new Booking2(providerName, serviceName, price, heads, phonenumber, date, time, image, addressadmin, email, age, lengthOfservice, selectedPayment, key,snapshotkey,timeStamp);
+            Booking2 booking2 = new Booking2(userName, serviceName, price, heads, userPhone, date, time, userImageUrl, userAddress, useremail, userAge, "", selectedPayment, userId,snapshotkey,timeStamp);
 
             // Add data to MybookUser
             DatabaseReference bookInfoRef2 = databaseReference2.child(childKey).child("bookInfo").child(snapshotkey);
